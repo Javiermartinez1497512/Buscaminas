@@ -51,11 +51,22 @@ public class Movimiento {
 					correcto = true;
 					break;
 			}
+			
+			if (correcto) {
+				this.columna = columna_Upper;
+			}
 		}
 		
 		return correcto;
 	}
-	
+	public boolean validaMovimiento(int fila, String columna) {
+		boolean correcto = false;
+		
+		if (this.validaFila(fila) && this.validaColuma(columna)) {
+			correcto = true;
+		}
+		return correcto;
+	}
 	// Métodos Proxy de los métodos private.
 	public boolean proxyValidaFila(int fila) {
 		return validaFila(fila);
