@@ -14,24 +14,24 @@ public class MovimientoTest {
 	public void validaFilaTest() {
 		Movimiento movimiento = new Movimiento();
 		
-		assertFalse(movimiento.proxyValidaFila(0));
-		assertTrue(movimiento.proxyValidaFila(1));
-		assertTrue(movimiento.proxyValidaFila(8));
-		assertFalse(movimiento.proxyValidaFila(9));
+		assertFalse(movimiento.validaFila(0));
+		assertTrue(movimiento.validaFila(1));
+		assertTrue(movimiento.validaFila(8));
+		assertFalse(movimiento.validaFila(9));
 	}
 	
 	@Test
 	public void validaColumnaTest() {
 		Movimiento movimiento = new Movimiento();
 		
-		assertFalse(movimiento.proxyValidaColumna("?"));
-		assertTrue(movimiento.proxyValidaColumna("A"));
-		assertTrue(movimiento.proxyValidaColumna("a"));
-		assertTrue(movimiento.proxyValidaColumna("H"));
-		assertTrue(movimiento.proxyValidaColumna("h"));
-		assertFalse(movimiento.proxyValidaColumna("X"));
-		assertFalse(movimiento.proxyValidaColumna("x"));
-		assertFalse(movimiento.proxyValidaColumna("fallo"));
+		assertFalse(movimiento.validaColumna("?"));
+		assertTrue(movimiento.validaColumna("A"));
+		assertTrue(movimiento.validaColumna("a"));
+		assertTrue(movimiento.validaColumna("H"));
+		assertTrue(movimiento.validaColumna("h"));
+		assertFalse(movimiento.validaColumna("X"));
+		assertFalse(movimiento.validaColumna("x"));
+		assertFalse(movimiento.validaColumna("fallo"));
 	}
 	
 	@Test

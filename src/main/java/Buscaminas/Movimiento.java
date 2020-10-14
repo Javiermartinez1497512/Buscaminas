@@ -9,7 +9,7 @@ public class Movimiento {
 		this.columna = null;
 	}
 	
-	private boolean validaFila(int fila) {
+	public boolean validaFila(int fila) {
 		boolean correcto = false;
 		
 		if (fila <= 8 && fila >= 1) {
@@ -20,7 +20,7 @@ public class Movimiento {
 		return correcto;
 	}
 	
-	private boolean validaColuma(String columna) {
+	public boolean validaColumna(String columna) {
 		boolean correcto = false;
 		
 		if (columna.length() == 1) {
@@ -62,16 +62,9 @@ public class Movimiento {
 	public boolean validaMovimiento(int fila, String columna) {
 		boolean correcto = false;
 		
-		if (this.validaFila(fila) && this.validaColuma(columna)) {
+		if (this.validaFila(fila) && this.validaColumna(columna)) {
 			correcto = true;
 		}
 		return correcto;
-	}
-	// Métodos Proxy de los métodos private.
-	public boolean proxyValidaFila(int fila) {
-		return validaFila(fila);
-	}
-	public boolean proxyValidaColumna(String columna) {
-		return validaColuma(columna);
 	}
 }
