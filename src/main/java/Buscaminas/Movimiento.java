@@ -3,10 +3,12 @@ package Buscaminas;
 public class Movimiento {
 	private int fila;
 	private String columna;
+	private String accion;
 	
 	public Movimiento() {
 		this.fila = 0;
 		this.columna = null;
+		this.accion = null;
 	}
 	
 	public boolean validaFila(int fila) {
@@ -64,6 +66,32 @@ public class Movimiento {
 		
 		if (this.validaFila(fila) && this.validaColumna(columna)) {
 			correcto = true;
+		}
+		return correcto;
+	}
+	public boolean validaAccion(String accion) {
+		boolean correcto = false;
+		if (accion.length() == 1) {
+			String accion_Upper = accion.toUpperCase();
+			
+			switch(accion_Upper) {
+			case("A"):
+				correcto = true;
+				break;
+			case("M"):
+				correcto = true;
+				break;
+			case("D"):
+				correcto = true;
+				break;
+			case("C"):
+				correcto = true;
+				break;
+			}
+			
+			if (correcto) {
+				this.accion = accion_Upper;
+			}
 		}
 		return correcto;
 	}
