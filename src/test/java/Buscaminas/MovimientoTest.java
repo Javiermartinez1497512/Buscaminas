@@ -51,6 +51,25 @@ public class MovimientoTest {
 		assertTrue(movimiento.validaMovimiento(3,"a"));
 		assertTrue(movimiento.validaMovimiento(5,"H"));
 		assertTrue(movimiento.validaMovimiento(8,"h"));
+	}
+	
+	@Test
+	public void validaAccion() {
+		Movimiento movimiento = new Movimiento();
+		assertTrue(movimiento.validaAccion("A"));
+		assertTrue(movimiento.validaAccion("M"));
+		assertTrue(movimiento.validaAccion("D"));
+		assertTrue(movimiento.validaAccion("C"));
+		assertTrue(movimiento.validaAccion("a"));
+		assertTrue(movimiento.validaAccion("m"));
+		assertTrue(movimiento.validaAccion("d"));
+		assertTrue(movimiento.validaAccion("c"));
 		
+		assertFalse(movimiento.validaAccion("AA"));
+		assertFalse(movimiento.validaAccion("3"));
+		assertFalse(movimiento.validaAccion("-3"));
+		assertFalse(movimiento.validaAccion("J"));
+		assertFalse(movimiento.validaAccion("j"));
+		assertFalse(movimiento.validaAccion("?"));
 	}
 }
