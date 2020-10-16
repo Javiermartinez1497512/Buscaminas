@@ -2,12 +2,12 @@ package Buscaminas;
 
 public class Movimiento {
 	private int fila;
-	private String columna;
+	private int columna;
 	private String accion;
 	
 	public Movimiento() {
 		this.fila = 0;
-		this.columna = null;
+		this.columna = 0;
 		this.accion = null;
 	}
 	
@@ -16,7 +16,7 @@ public class Movimiento {
 		
 		if (fila <= 8 && fila >= 1) {
 			correcto = true;
-			this.fila = fila;
+			this.fila = fila-1;
 		}
 		
 		return correcto;
@@ -30,32 +30,36 @@ public class Movimiento {
 			switch(columna_Upper) {
 				case("A"):
 					correcto = true;
+					this.columna = 0;
 					break;
 				case("B"):
 					correcto = true;
+					this.columna = 1;
 					break;
 				case("C"):
 					correcto = true;
+					this.columna = 2;
 					break;
 				case("D"):
 					correcto = true;
+					this.columna = 3;
 					break;
 				case("E"):
 					correcto = true;
+					this.columna = 4;
 					break;
 				case("F"):
 					correcto = true;
+					this.columna = 5;
 					break;
 				case("G"):
 					correcto = true;
+					this.columna = 6;
 					break;
 				case("H"):
 					correcto = true;
+					this.columna = 7;
 					break;
-			}
-			
-			if (correcto) {
-				this.columna = columna_Upper;
 			}
 		}
 		

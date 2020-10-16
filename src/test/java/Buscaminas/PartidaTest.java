@@ -20,4 +20,11 @@ public class PartidaTest {
 		partida.noSeguir();
 		assertTrue(partida.seguir());
 	}
+	
+	@Test
+	public void Partida1Test() {
+		Movimiento movimiento = new Movimiento();
+		movimiento.validaMovimiento(0, "A");
+		movimiento.validaAccion("A");
+	}
 }

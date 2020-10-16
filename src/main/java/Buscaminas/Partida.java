@@ -6,9 +6,11 @@ import java.io.InputStreamReader;
 
 public class Partida {
 	private boolean perdido;
+	private Tablero tablero;
 
 	public Partida() {
 		this.perdido = false;
+		this.tablero = new Tablero();
 	}
 
 	public boolean seguir() {
@@ -39,14 +41,22 @@ public class Partida {
 			Movimiento movimiento = new Movimiento();
 
 			if (movimiento.validaMovimiento(x_toInt, y)) {
-				System.out.println("De momento todo OK.");
-				this.noSeguir();
+				System.out.print("Introduce una acción a realizar A[Abrir], M[Marcar], D[Desmarcar], C[Cancelar]: ");
+				String accion = reader.readLine();
+				
+				if (movimiento.validaAccion(accion)) {
+					//Aqui tocaria ya comprobar cosas con el tablero.
+					System.out.println("Entramos");
+					this.noSeguir();
+				}else {
+					System.out.println("ERR3: Introduce Introduce una acción permitida (A, M, D, C).");
+				}	
 			}else {
 				if (!movimiento.validaFila(x_toInt)) {
-					System.out.println("Introduce un valor entre 1 y 8.");
+					System.out.println("ERR1: Introduce un valor entre 1 y 8.");
 					this.noSeguir();
 				}else if (!movimiento.validaColumna(y)) {
-					System.out.println("Introduce una letra entre A y H.");
+					System.out.println("ERR2: Introduce una letra entre A y H.");
 					this.noSeguir();
 				}
 			}
