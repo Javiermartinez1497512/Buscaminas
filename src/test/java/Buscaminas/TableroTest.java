@@ -31,6 +31,16 @@ public class TableroTest {
 	@Test
 	public void compruebaMinasTest() {
 		
+		TableroMock tablero = new TableroMock(true);
+		tablero.insertaMina(0, 0);
+		Movimiento movimiento= new Movimiento();
+		
+		movimiento.validaMovimiento(0, "a");		
+		assertTrue(compruebaMinas(movimiento));
+		
+		movimiento.validaMovimiento(0, "b");		
+		assertFalse(compruebaMinas(movimiento));
+		
 	}
 
 }
