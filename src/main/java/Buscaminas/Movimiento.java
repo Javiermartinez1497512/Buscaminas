@@ -99,4 +99,12 @@ public class Movimiento {
 		}
 		return correcto;
 	}
+	
+	public int getFila() {
+		return fila;
+		}
+	
+	public int getColumna() {
+		return columna;
+		}
 }

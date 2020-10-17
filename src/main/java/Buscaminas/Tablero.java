@@ -40,6 +40,10 @@ public class Tablero {
 	}
 	
 	public boolean compruebaMinas(Movimiento movimiento) {
-		return true;
+		
+		if(tablero_minas[movimiento.getFila()][movimiento.getColumna()]=="X")
+			return true;
+		else
+			return false;
 	}
 }
