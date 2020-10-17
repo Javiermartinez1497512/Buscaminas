@@ -24,8 +24,13 @@ public class TableroTest {
 		assertEquals(counter, 8);
 		
 		TableroMock tablero2 = new TableroMock(true);
-		int counter2 = tablero.contarMinas();
+		int counter2 = tablero2.contarMinas();
 		assertEquals(counter2, 8);
+	}
+	
+	@Test
+	public void compruebaMinasTest() {
+		
 	}
 
 }

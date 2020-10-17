@@ -9,7 +9,6 @@ public class TableroMock extends Tablero {
 	
 	public TableroMock(boolean x) {
 		super();
-		System.out.println("Hariamos esto");
 	}
 	
 	public void insertaMina(int x, int y) {
@@ -22,7 +21,13 @@ public class TableroMock extends Tablero {
 	
 	public int contarMinas() {
 		int contador = 0;
-		
+		for (int i = 0; i<this.tablero_minas.length; i++) {
+			for (int j = 0; j<this.tablero_minas[i].length; j++) {
+				if (this.tablero_minas[i][j] == "X") {
+					contador++;
+				}
+			}
+		}
 		return contador;
 	}
 }
