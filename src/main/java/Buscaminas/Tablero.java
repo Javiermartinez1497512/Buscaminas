@@ -17,7 +17,6 @@ public class Tablero {
     }
     
     public void iniciarTablero() {
-    	
 		for(int i = 0; i<this.tablero.length; i++) {
 			for (int j = 0; j<this.tablero[i].length; j++) {
 				tablero[i][j] = " ";
@@ -57,6 +56,7 @@ public class Tablero {
 		switch(movimiento.getAccion()) {
 		case("A"):
 			if(this.tablero[movimiento.getFila()][movimiento.getColumna()] == " ") {
+				//this.tablero cuentaVecinos(movimiento.getFila(),movimiento.getColumna())
 				this.tablero[movimiento.getFila()][movimiento.getColumna()] = "A";
 			}
 			break;
@@ -89,12 +89,15 @@ public class Tablero {
 		
 		switch(movimiento.getAccion()) {
 		case("A"):
-			mina = this.compruebaMinas(movimiento);
-			if (!mina) {
-				this.actualizar(movimiento);
+			if (this.tablero[movimiento.getFila()][movimiento.getColumna()] == " ") {
+				mina = this.compruebaMinas(movimiento);
+				if (!mina) {
+					this.actualizar(movimiento);
+				}
 			}
 			break;
 		case("M"):
+			
 			this.actualizar(movimiento);
 			break;
 		case("D"):
@@ -105,5 +108,11 @@ public class Tablero {
 		}
 		
 		return mina;
+	}
+	
+	public int cuentaVecinos(int fila, int columna) {
+		int contador = 0;
+		
+		return contador;
 	}
 }

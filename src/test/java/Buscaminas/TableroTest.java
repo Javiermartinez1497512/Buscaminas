@@ -91,6 +91,15 @@ public class TableroTest {
 		assertTrue(movimiento5.validaAccion("D"));
 		assertFalse(tablero.aplicaAccion(movimiento5));
 		assertEquals(tablero.getPosicionTablero(movimiento5.getFila(), movimiento5.getColumna()), " ");
+	}
+	
+	@Test
+	public void cuentaVecinosTest() {
+		TableroMock tablero = new TableroMock();
+		tablero.iniciarTablero();
+		tablero.insertaMina(2, 2);
+		tablero.insertaMina(4, 5);
 		
+		tablero.cuentaVecinos(2,3);
 	}
 }

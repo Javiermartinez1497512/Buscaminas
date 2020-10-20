@@ -61,10 +61,8 @@ public class Partida {
 			}else {
 				if (!movimiento.validaFila(x_toInt)) {
 					System.out.println("ERR1: Introduce un valor entre 1 y 8.");
-					this.noSeguir();
 				}else if (!movimiento.validaColumna(y)) {
 					System.out.println("ERR2: Introduce una letra entre A y H.");
-					this.noSeguir();
 				}
 			}
 		}
