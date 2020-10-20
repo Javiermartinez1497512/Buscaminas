@@ -19,6 +19,10 @@ public class TableroMock extends Tablero {
 		return super.tablero_minas[x][y];
 	}
 	
+	public String getPosicionTablero(int x, int y) {
+		return super.tablero[x][y];
+	}
+	
 	public int contarMinas() {
 		int contador = 0;
 		for (int i = 0; i<this.tablero_minas.length; i++) {

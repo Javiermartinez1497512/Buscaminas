@@ -54,8 +54,23 @@ public class Tablero {
 	}
 	
 	public void actualizar(Movimiento movimiento) {
-		this.tablero[movimiento.getFila()][movimiento.getColumna()] = "A";
-		
+		switch(movimiento.getAccion()) {
+		case("A"):
+			if(this.tablero[movimiento.getFila()][movimiento.getColumna()] == " ") {
+				this.tablero[movimiento.getFila()][movimiento.getColumna()] = "A";
+			}
+			break;
+		case("M"):
+			if (this.tablero[movimiento.getFila()][movimiento.getColumna()] == " ") {
+				this.tablero[movimiento.getFila()][movimiento.getColumna()] = "M";
+			}
+			break;
+		case("D"):
+			if (this.tablero[movimiento.getFila()][movimiento.getColumna()] == "M") {
+				this.tablero[movimiento.getFila()][movimiento.getColumna()] = " ";
+			}
+			break;
+		}
 	}
 	
 	public boolean compruebaMinas(Movimiento movimiento) {
@@ -80,13 +95,12 @@ public class Tablero {
 			}
 			break;
 		case("M"):
-			
+			this.actualizar(movimiento);
 			break;
 		case("D"):
-			
+			this.actualizar(movimiento);
 			break;
 		case("C"):
-			
 			break;
 		}
 		

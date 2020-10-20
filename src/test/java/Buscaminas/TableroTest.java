@@ -48,8 +48,10 @@ public class TableroTest {
 		assertTrue(tablero.compruebaMinas(movimiento3));
 	}
 	
+	@Test
 	public void aplicaAccionTest() {
 		TableroMock tablero = new TableroMock();
+		tablero.iniciarTablero();
 		tablero.insertaMina(2, 2);
 		tablero.insertaMina(4, 5);
 		
@@ -58,11 +60,37 @@ public class TableroTest {
 		assertTrue(movimiento.validaAccion("A"));
 		assertTrue(tablero.aplicaAccion(movimiento));
 		
+		tablero.pintar();
+		
 		Movimiento movimiento2 = new Movimiento();
 		assertTrue(movimiento2.validaMovimiento(1, "b"));	
-		assertTrue(movimiento.validaAccion("A"));
+		assertTrue(movimiento2.validaAccion("A"));
 		assertFalse(tablero.aplicaAccion(movimiento2));
+		assertEquals(tablero.getPosicionTablero(movimiento2.getFila(), movimiento2.getColumna()), "A");
+		
+		tablero.pintar();
+		
+		Movimiento movimiento3 = new Movimiento();
+		assertTrue(movimiento3.validaMovimiento(3, "H"));	
+		assertTrue(movimiento3.validaAccion("M"));
+		assertFalse(tablero.aplicaAccion(movimiento3));
+		assertEquals(tablero.getPosicionTablero(movimiento3.getFila(), movimiento3.getColumna()), "M");
+		
+		tablero.pintar();
+		
+		Movimiento movimiento4 = new Movimiento();
+		assertTrue(movimiento4.validaMovimiento(3, "H"));	
+		assertTrue(movimiento4.validaAccion("D"));
+		assertFalse(tablero.aplicaAccion(movimiento4));
+		assertEquals(tablero.getPosicionTablero(movimiento4.getFila(), movimiento4.getColumna()), " ");
+		
+		tablero.pintar();
+		
+		Movimiento movimiento5 = new Movimiento();
+		assertTrue(movimiento5.validaMovimiento(3, "H"));	
+		assertTrue(movimiento5.validaAccion("D"));
+		assertFalse(tablero.aplicaAccion(movimiento5));
+		assertEquals(tablero.getPosicionTablero(movimiento5.getFila(), movimiento5.getColumna()), " ");
 		
 	}
-
 }
