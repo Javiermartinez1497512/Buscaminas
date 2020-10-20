@@ -101,10 +101,14 @@ public class Movimiento {
 	}
 	
 	public int getFila() {
-		return fila;
-		}
+		return this.fila;
+	}
 	
 	public int getColumna() {
-		return columna;
-		}
+		return this.columna;
+	}
+	
+	public String getAccion() {
+		return this.accion;
+	}
 }

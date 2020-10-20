@@ -30,4 +30,16 @@ public class TableroMock extends Tablero {
 		}
 		return contador;
 	}
+	
+	public void pintaMinas() {
+		System.out.println("   A B C D E F G H");
+		for(int i = 0; i<this.tablero_minas.length; i++) {
+			System.out.println("  -----------------");
+			System.out.print((i+1)+" |");
+			for (int j = 0; j<this.tablero_minas[i].length; j++) {
+				System.out.print(tablero_minas[i][j]+"|");
+			}
+			System.out.println();
+		}
+	}
 }

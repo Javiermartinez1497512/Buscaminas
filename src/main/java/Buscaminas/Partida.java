@@ -27,6 +27,7 @@ public class Partida {
 
 		System.out.println("Empieza la partida");
 		System.out.println();
+		tablero.pintar();
 
 		while (!this.seguir()) {
 			System.out.print("Introduce el numero de fila [1-8]: ");
@@ -46,8 +47,14 @@ public class Partida {
 				
 				if (movimiento.validaAccion(accion)) {
 					//Aqui tocaria ya comprobar cosas con el tablero.
-					System.out.println("Entramos");
-					this.noSeguir();
+					boolean mina = tablero.aplicaAccion(movimiento);
+					
+					if (mina) {
+						System.out.println("GAME OVER :(");
+						this.noSeguir();
+					}else {
+						tablero.pintar();
+					}
 				}else {
 					System.out.println("ERR3: Introduce Introduce una acción permitida (A, M, D, C).");
 				}	

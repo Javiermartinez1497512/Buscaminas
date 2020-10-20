@@ -31,15 +31,37 @@ public class TableroTest {
 	@Test
 	public void compruebaMinasTest() {
 		
-		TableroMock tablero = new TableroMock(true);
-		tablero.insertaMina(0, 0);
-		Movimiento movimiento= new Movimiento();
+		TableroMock tablero = new TableroMock();
+		tablero.insertaMina(2, 2);
+		tablero.insertaMina(4, 5);
+				
+		Movimiento movimiento = new Movimiento();
+		assertTrue(movimiento.validaMovimiento(3, "c"));	
+		assertTrue(tablero.compruebaMinas(movimiento));
 		
-		movimiento.validaMovimiento(0, "a");		
-		assertTrue(compruebaMinas(movimiento));
+		Movimiento movimiento2 = new Movimiento();
+		assertTrue(movimiento2.validaMovimiento(1, "b"));		
+		assertFalse(tablero.compruebaMinas(movimiento2));
 		
-		movimiento.validaMovimiento(0, "b");		
-		assertFalse(compruebaMinas(movimiento));
+		Movimiento movimiento3 = new Movimiento();
+		assertTrue(movimiento3.validaMovimiento(5, "F"));
+		assertTrue(tablero.compruebaMinas(movimiento3));
+	}
+	
+	public void aplicaAccionTest() {
+		TableroMock tablero = new TableroMock();
+		tablero.insertaMina(2, 2);
+		tablero.insertaMina(4, 5);
+		
+		Movimiento movimiento = new Movimiento();
+		assertTrue(movimiento.validaMovimiento(3, "C"));
+		assertTrue(movimiento.validaAccion("A"));
+		assertTrue(tablero.aplicaAccion(movimiento));
+		
+		Movimiento movimiento2 = new Movimiento();
+		assertTrue(movimiento2.validaMovimiento(1, "b"));	
+		assertTrue(movimiento.validaAccion("A"));
+		assertFalse(tablero.aplicaAccion(movimiento2));
 		
 	}
 
