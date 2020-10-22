@@ -16,16 +16,37 @@ public class TableroTest {
 		assertEquals(tablero.getPos(0, 0), "X");
 		assertEquals(tablero.getPos(0, 1), null);
 	}
-	
 	@Test
 	public void inicializarMinasTest() {
-		TableroMock tablero = new TableroMock(true);
-		int counter = tablero.contarMinas();
-		assertEquals(counter, 8);
 		
-		TableroMock tablero2 = new TableroMock(true);
-		int counter2 = tablero2.contarMinas();
-		assertEquals(counter2, 8);
+		Tablero tablero =  new Tablero();
+		MockRNG mRNG= new MockRNG();
+		tablero.setRNG(mRNG);
+		mRNG.setConfig(0);
+		
+		tablero.inicializarMinasTest();
+		
+		assertEquals(tablero.getPos(0, 0), "X");
+		assertEquals(tablero.getPos(0, 1), "X");
+		assertEquals(tablero.getPos(0, 7), "X");
+		assertEquals(tablero.getPos(1, 7), "X");
+		assertEquals(tablero.getPos(7, 0), "X");
+		assertEquals(tablero.getPos(7, 1), "X");
+		assertEquals(tablero.getPos(6, 7), "X");
+		assertEquals(tablero.getPos(7, 7), "X");	
+		
+		assertEquals(tablero.getPos(1, 0), null);
+		assertEquals(tablero.getPos(0, 2), null);
+		assertEquals(tablero.getPos(0, 6), null);
+		assertEquals(tablero.getPos(2, 7), null);
+		assertEquals(tablero.getPos(6, 0), null);
+		assertEquals(tablero.getPos(7, 2), null);
+		assertEquals(tablero.getPos(6, 6), null);
+		assertEquals(tablero.getPos(7, 6), null);
+		
+		
+		
+	
 	}
 	
 	@Test

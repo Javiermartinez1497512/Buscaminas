@@ -23,22 +23,17 @@ public class Tablero {
 			}
 		}
     }
-    public void insertarMina() {
-    	
-    	int v[]=rng.getRandomNumber();
-    	
-		int aleatorioX= v[0];
-		int aleatorioY = v[1];
-		
-		if (this.tablero_minas[aleatorioX][aleatorioY] == null) {
-			this.tablero_minas[aleatorioX][aleatorioY] = "X";}
-    	
-    }
-    
+
 	private void inicializarMinas() {
 		for (int i = 0; i < this.minas; i++) 
 		{
-			this.insertarMina();
+			int v[]=rng.getRandomNumber();
+	    	
+			int aleatorioX= v[0];
+			int aleatorioY = v[1];
+			
+			if (this.tablero_minas[aleatorioX][aleatorioY] == null) {
+				this.tablero_minas[aleatorioX][aleatorioY] = "X";}
 		}
 	}
 	
