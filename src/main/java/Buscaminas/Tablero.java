@@ -58,8 +58,9 @@ public class Tablero {
 		switch(movimiento.getAccion()) {
 		case("A"):
 			if(this.tablero[movimiento.getFila()][movimiento.getColumna()] == " ") {
-				//this.tablero cuentaVecinos(movimiento.getFila(),movimiento.getColumna())
-				this.tablero[movimiento.getFila()][movimiento.getColumna()] = "A";
+				int vecinos = proxyCuentaVecinos(movimiento.getFila(),movimiento.getColumna());
+				this.tablero[movimiento.getFila()][movimiento.getColumna()] = Integer.toString(vecinos);
+				//this.tablero[movimiento.getFila()][movimiento.getColumna()] = "A";
 			}
 			break;
 		case("M"):
@@ -111,9 +112,195 @@ public class Tablero {
 		return mina;
 	}
 	
-	public int cuentaVecinos(int fila, int columna) {
+	private int cuentaVecinos(int fila, int columna) {
 		int contador = 0;
 		
+		if (fila == 0 && columna == 0) {
+			contador = this.cuentaArribaIzquierda();
+		}else if (fila == 0 && columna == this.tamanoY-1) {
+			contador = this.cuentaArribaDerecha();
+		}else if (fila == this.tamanoX-1 && columna == 0) {
+			contador = this.cuentaAbajoIzquierda();
+		}else if (fila == this.tamanoX-1 && columna == this.tamanoY-1) {
+			contador = this.cuentaAbajoDerecha();
+		}else if (fila == 0) {
+			contador = this.cuentaArriba(columna);
+		}else if (fila == this.tamanoX-1) {
+			contador = this.cuentaAbajo(columna);
+		}else if(columna == 0) {
+			contador = this.cuentaIzquierda(fila);
+		}else if (columna == this.tamanoY-1) {
+			contador = this.cuentaDerecha(fila);
+		}else {
+			contador = this.cuentaCentro(fila, columna);
+		}
+		
 		return contador;
+	}
+	
+	//Metodos para contar vecinos de las esquinas.
+	private int cuentaArribaIzquierda() {
+		int contador = 0;
+		if (this.tablero_minas[0][1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[1][0] == "X") {
+			contador++;
+		}
+		if(this.tablero_minas[1][1] == "X") {
+			contador++;
+		}
+		return contador;
+	}
+	private int cuentaArribaDerecha() {
+		int contador = 0;
+		if (this.tablero_minas[0][this.tamanoY-2] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[1][this.tamanoY-2] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[1][this.tamanoY-1] == "X") {
+			contador++;
+		}
+		return contador;
+	}
+	private int cuentaAbajoIzquierda() {
+		int contador = 0;
+		if (this.tablero_minas[this.tamanoX-2][0] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[this.tamanoX-2][1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[this.tamanoX-1][1] == "X") {
+			contador++;
+		}
+		return contador;
+	}
+	private int cuentaAbajoDerecha() {
+		int contador = 0;
+		if (this.tablero_minas[this.tamanoX-2][this.tamanoY-2] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[this.tamanoX-2][this.tamanoY-1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[this.tamanoX-1][this.tamanoY-2] == "X") {
+			contador++;
+		}
+		return contador;
+	}
+	//Metodos contar limites tablero
+	private int cuentaArriba(int columna) {
+		int contador = 0;
+		if (this.tablero_minas[0][columna-1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[0][columna+1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[1][columna-1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[1][columna] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[1][columna+1] == "X") {
+			contador++;
+		}
+		return contador;
+	}
+	private int cuentaDerecha(int fila) {
+		int contador = 0;
+		if (this.tablero_minas[fila-1][this.tamanoY-1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila-1][this.tamanoY-2] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila][this.tamanoY-2] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila+1][this.tamanoY-2] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila+1][this.tamanoY-1] == "X") {
+			contador++;
+		}
+		return contador;
+	}
+	private int cuentaIzquierda(int fila) {
+		int contador = 0;
+		if (this.tablero_minas[fila-1][0] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila-1][1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila][1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila+1][0] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila+1][1] == "X") {
+			contador++;
+		}
+		return contador;
+	}
+	private int cuentaAbajo(int columna) {
+		int contador = 0;
+		if (this.tablero_minas[this.tamanoX-1][columna-1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[this.tamanoX-2][columna-1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[this.tamanoX-2][columna] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[this.tamanoX-2][columna+1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[this.tamanoX-1][columna+1] == "X") {
+			contador++;
+		}
+		return contador;
+	}
+	//Metodo para contar vecinos centrales
+	private int cuentaCentro(int fila, int columna) {
+		int contador = 0;
+		if (this.tablero_minas[fila-1][columna-1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila-1][columna] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila-1][columna+1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila][columna-1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila][columna+1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila+1][columna-1] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila+1][columna] == "X") {
+			contador++;
+		}
+		if (this.tablero_minas[fila+1][columna+1] == "X") {
+			contador++;
+		}
+		return contador;
+	}
+	
+	//Metodos Proxy
+	public int proxyCuentaVecinos(int fila, int columna) {
+		int vecinos = this.cuentaVecinos(fila, columna); 
+		return vecinos;
 	}
 }

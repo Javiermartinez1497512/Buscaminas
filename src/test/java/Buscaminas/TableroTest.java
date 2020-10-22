@@ -66,7 +66,6 @@ public class TableroTest {
 		assertTrue(movimiento2.validaMovimiento(1, "b"));	
 		assertTrue(movimiento2.validaAccion("A"));
 		assertFalse(tablero.aplicaAccion(movimiento2));
-		assertEquals(tablero.getPosicionTablero(movimiento2.getFila(), movimiento2.getColumna()), "A");
 		
 		tablero.pintar();
 		
@@ -94,7 +93,7 @@ public class TableroTest {
 	}
 	
 	@Test
-	public void cuentaVecinosTest() {
+	public void cuentaVecinosTest() {		
 		Tablero tablero = new Tablero();
 		//Suponemos Minas en:
 		// 2-B (1-1)
@@ -106,42 +105,42 @@ public class TableroTest {
 		// 8-C (7-2)
 		// 8-H (7-7)
 		
-		int res0_0 = tablero.cuentaVecinos(0,0);
-		int res0_1 = tablero.cuentaVecinos(0,1);
-		int res0_2 = tablero.cuentaVecinos(0,2);
-		int res0_3 = tablero.cuentaVecinos(0,3);
-		int res0_4 = tablero.cuentaVecinos(0,4);
-		int res0_5 = tablero.cuentaVecinos(0,5);
-		int res0_6 = tablero.cuentaVecinos(0,6);
-		int res0_7 = tablero.cuentaVecinos(0,7);
+		int res0_0 = tablero.proxyCuentaVecinos(0,0);
+		int res0_1 = tablero.proxyCuentaVecinos(0,1);
+		int res0_2 = tablero.proxyCuentaVecinos(0,2);
+		int res0_3 = tablero.proxyCuentaVecinos(0,3);
+		int res0_4 = tablero.proxyCuentaVecinos(0,4);
+		int res0_5 = tablero.proxyCuentaVecinos(0,5);
+		int res0_6 = tablero.proxyCuentaVecinos(0,6);
+		int res0_7 = tablero.proxyCuentaVecinos(0,7);
 		
-		int res1_0 = tablero.cuentaVecinos(1,0);
-		int res2_0 = tablero.cuentaVecinos(2,0);
-		int res3_0 = tablero.cuentaVecinos(3,0);
-		int res4_0 = tablero.cuentaVecinos(4,0);
-		int res5_0 = tablero.cuentaVecinos(5,0);
-		int res6_0 = tablero.cuentaVecinos(6,0);
-		int res7_0 = tablero.cuentaVecinos(7,0);
+		int res1_0 = tablero.proxyCuentaVecinos(1,0);
+		int res2_0 = tablero.proxyCuentaVecinos(2,0);
+		int res3_0 = tablero.proxyCuentaVecinos(3,0);
+		int res4_0 = tablero.proxyCuentaVecinos(4,0);
+		int res5_0 = tablero.proxyCuentaVecinos(5,0);
+		int res6_0 = tablero.proxyCuentaVecinos(6,0);
+		int res7_0 = tablero.proxyCuentaVecinos(7,0);
 		
-		int res1_7 = tablero.cuentaVecinos(1,7);
-		int res2_7 = tablero.cuentaVecinos(2,7);
+		int res1_7 = tablero.proxyCuentaVecinos(1,7);
+		int res2_7 = tablero.proxyCuentaVecinos(2,7);
 		//res3_7 Mina
-		int res4_7 = tablero.cuentaVecinos(4,7);
-		int res5_7 = tablero.cuentaVecinos(5,7);
-		int res6_7 = tablero.cuentaVecinos(6,7);
+		int res4_7 = tablero.proxyCuentaVecinos(4,7);
+		int res5_7 = tablero.proxyCuentaVecinos(5,7);
+		int res6_7 = tablero.proxyCuentaVecinos(6,7);
 		//res7_7 Mina
 		
-		int res7_1 = tablero.cuentaVecinos(7,1);
+		int res7_1 = tablero.proxyCuentaVecinos(7,1);
 		//res7_2 Mina
-		int res7_3 = tablero.cuentaVecinos(7,3);
-		int res7_4 = tablero.cuentaVecinos(7,4);
-		int res7_5 = tablero.cuentaVecinos(7,5);
-		int res7_6 = tablero.cuentaVecinos(7,6);
+		int res7_3 = tablero.proxyCuentaVecinos(7,3);
+		int res7_4 = tablero.proxyCuentaVecinos(7,4);
+		int res7_5 = tablero.proxyCuentaVecinos(7,5);
+		int res7_6 = tablero.proxyCuentaVecinos(7,6);
 		
-		int res2_3 = tablero.cuentaVecinos(2,3);
-		int res2_5 = tablero.cuentaVecinos(2, 5);
-		int res3_1 = tablero.cuentaVecinos(3, 1);
-		int res4_4 = tablero.cuentaVecinos(4, 4);
+		int res2_3 = tablero.proxyCuentaVecinos(2,3);
+		int res2_5 = tablero.proxyCuentaVecinos(2, 5);
+		int res3_1 = tablero.proxyCuentaVecinos(3, 1);
+		int res4_4 = tablero.proxyCuentaVecinos(4, 4);
 		
 		
 		assertEquals(res0_0, 1);
@@ -178,7 +177,8 @@ public class TableroTest {
 		assertEquals(res3_1, 0);
 		assertEquals(res4_4, 2);
 		
-		
+		//Evidentemente este metodo fallara hasta el momento
+		//que hagamos el mock para insertar minas donde nosotros queramos
 	}
 	
 	@Test
