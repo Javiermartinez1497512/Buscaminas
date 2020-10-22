@@ -7,7 +7,7 @@ public class Tablero {
     private int tamanoX = 8;
     private int tamanoY = 8;
     private int minas = 8;
-
+    private MockRNG rng;
 
     public Tablero() {
         this.tablero_minas = new String[this.tamanoX][this.tamanoY];
@@ -22,6 +22,17 @@ public class Tablero {
 				tablero[i][j] = " ";
 			}
 		}
+    }
+    public void insertarMina() {
+    	
+    	int v[]=rng.getRandomNumber();
+    	
+		int aleatorioX= v[0];
+		int aleatorioY = v[1];
+		
+		if (this.tablero_minas[aleatorioX][aleatorioY] == null) {
+			this.tablero_minas[aleatorioX][aleatorioY] = "X";}
+    	
     }
     
 	private void inicializarMinas() {
@@ -75,6 +86,18 @@ public class Tablero {
 			break;
 		}
 	}
+	public void setRNG(MockRNG r) {
+		
+		this.rng=r;
+	}
+	public String getPos(int x, int y) {
+		return this.tablero_minas[x][y];
+	}
+	public int getTamano()
+	{
+		return this.tamanoX;
+	}
+	
 	
 	public boolean compruebaMinas(Movimiento movimiento) {
 		boolean mina = false;
