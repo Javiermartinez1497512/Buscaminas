@@ -95,12 +95,90 @@ public class TableroTest {
 	
 	@Test
 	public void cuentaVecinosTest() {
-		TableroMock tablero = new TableroMock();
-		tablero.iniciarTablero();
-		tablero.insertaMina(2, 2);
-		tablero.insertaMina(4, 5);
+		Tablero tablero = new Tablero();
+		//Suponemos Minas en:
+		// 2-B (1-1)
+		// 2-G (1-6)
+		// 4-E (3-4)
+		// 4-H (3-7)
+		// 5-F (4-5)
+		// 6-B (5-1)
+		// 8-C (7-2)
+		// 8-H (7-7)
 		
-		tablero.cuentaVecinos(2,3);
+		int res0_0 = tablero.cuentaVecinos(0,0);
+		int res0_1 = tablero.cuentaVecinos(0,1);
+		int res0_2 = tablero.cuentaVecinos(0,2);
+		int res0_3 = tablero.cuentaVecinos(0,3);
+		int res0_4 = tablero.cuentaVecinos(0,4);
+		int res0_5 = tablero.cuentaVecinos(0,5);
+		int res0_6 = tablero.cuentaVecinos(0,6);
+		int res0_7 = tablero.cuentaVecinos(0,7);
+		
+		int res1_0 = tablero.cuentaVecinos(1,0);
+		int res2_0 = tablero.cuentaVecinos(2,0);
+		int res3_0 = tablero.cuentaVecinos(3,0);
+		int res4_0 = tablero.cuentaVecinos(4,0);
+		int res5_0 = tablero.cuentaVecinos(5,0);
+		int res6_0 = tablero.cuentaVecinos(6,0);
+		int res7_0 = tablero.cuentaVecinos(7,0);
+		
+		int res1_7 = tablero.cuentaVecinos(1,7);
+		int res2_7 = tablero.cuentaVecinos(2,7);
+		//res3_7 Mina
+		int res4_7 = tablero.cuentaVecinos(4,7);
+		int res5_7 = tablero.cuentaVecinos(5,7);
+		int res6_7 = tablero.cuentaVecinos(6,7);
+		//res7_7 Mina
+		
+		int res7_1 = tablero.cuentaVecinos(7,1);
+		//res7_2 Mina
+		int res7_3 = tablero.cuentaVecinos(7,3);
+		int res7_4 = tablero.cuentaVecinos(7,4);
+		int res7_5 = tablero.cuentaVecinos(7,5);
+		int res7_6 = tablero.cuentaVecinos(7,6);
+		
+		int res2_3 = tablero.cuentaVecinos(2,3);
+		int res2_5 = tablero.cuentaVecinos(2, 5);
+		int res3_1 = tablero.cuentaVecinos(3, 1);
+		int res4_4 = tablero.cuentaVecinos(4, 4);
+		
+		
+		assertEquals(res0_0, 1);
+		assertEquals(res0_1, 1);
+		assertEquals(res0_2, 1);
+		assertEquals(res0_3, 0);
+		assertEquals(res0_4, 0);
+		assertEquals(res0_5, 1);
+		assertEquals(res0_6, 1);
+		assertEquals(res0_7, 1);
+		
+		assertEquals(res1_0, 1);
+		assertEquals(res2_0, 1);
+		assertEquals(res3_0, 0);
+		assertEquals(res4_0, 1);
+		assertEquals(res5_0, 1);
+		assertEquals(res6_0, 1);
+		assertEquals(res7_0, 0);
+		
+		assertEquals(res1_7, 1);
+		assertEquals(res2_7, 2);
+		assertEquals(res4_7, 1);
+		assertEquals(res5_7, 0);
+		assertEquals(res6_7, 1);
+		
+		assertEquals(res7_1, 1);
+		assertEquals(res7_3, 1);
+		assertEquals(res7_4, 0);
+		assertEquals(res7_5, 0);
+		assertEquals(res7_6, 1);
+		
+		assertEquals(res2_3, 1);
+		assertEquals(res2_5, 2);
+		assertEquals(res3_1, 0);
+		assertEquals(res4_4, 2);
+		
+		
 	}
 	
 	@Test
@@ -119,7 +197,7 @@ public class TableroTest {
 		}
 		
 		String pintar1 = tablero.pintar();
-		
+			
 		assertEquals(tablero_clear, pintar1);
 	}
 }

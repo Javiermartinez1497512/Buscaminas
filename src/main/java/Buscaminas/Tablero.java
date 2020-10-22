@@ -99,7 +99,6 @@ public class Tablero {
 			}
 			break;
 		case("M"):
-			
 			this.actualizar(movimiento);
 			break;
 		case("D"):
