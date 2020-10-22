@@ -13,6 +13,7 @@ public class Tablero {
         this.tablero_minas = new String[this.tamanoX][this.tamanoY];
         this.tablero = new String[this.tamanoX][this.tamanoY];
         this.iniciarTablero();
+        this.inicializarMinas();
         
     }
     
