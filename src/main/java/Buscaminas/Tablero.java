@@ -42,7 +42,15 @@ public class Tablero {
 	
 	public String pintar() {
 		String pintar = "";
-		
+		pintar+="   A B C D E F G H\n";
+		for(int i = 0; i<this.tablero.length; i++) {
+			pintar+="  -----------------\n";
+			pintar+=(i+1)+" |";
+			for (int j = 0; j<this.tablero[i].length; j++) {
+				pintar+=this.tablero[i][j]+"|";
+			}
+			pintar+="\n";
+		}
 		return pintar;
 	}
 	
