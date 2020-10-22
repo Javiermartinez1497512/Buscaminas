@@ -102,4 +102,24 @@ public class TableroTest {
 		
 		tablero.cuentaVecinos(2,3);
 	}
+	
+	@Test
+	public void pintarTest() {
+		Tablero tablero = new Tablero();
+		
+		String tablero_clear = "";
+		tablero_clear+="   A B C D E F G H\n";
+		for(int i = 0; i<8; i++) {
+			tablero_clear+="  -----------------\n";
+			tablero_clear+=(i+1)+" |";
+			for (int j = 0; j<8; j++) {
+				tablero_clear+=" "+"|";
+			}
+			tablero_clear+="\n";
+		}
+		
+		String pintar1 = tablero.pintar();
+		
+		assertEquals(tablero_clear, pintar1);
+	}
 }
