@@ -8,13 +8,6 @@ public class TableroTest {
 		
 
 	@Test
-	public void tableroTest() {
-		Tablero tablero = new Tablero();
-		
-		assertEquals(tablero.getPos(0, 0), "X");
-		assertEquals(tablero.getPos(0, 1), null);
-	}
-	@Test
 	public void inicializarMinasTest() {
 		
 		Tablero tablero =  new Tablero();

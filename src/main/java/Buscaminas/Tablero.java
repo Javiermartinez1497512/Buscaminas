@@ -13,7 +13,7 @@ public class Tablero {
         this.tablero_minas = new String[this.tamanoX][this.tamanoY];
         this.tablero = new String[this.tamanoX][this.tamanoY];
         this.iniciarTablero();
-        this.inicializarMinas();
+
         
     }
     
@@ -26,15 +26,28 @@ public class Tablero {
     }
 
 	private void inicializarMinas() {
+		
+		int v[];
+		int aleatorioX, aleatorioY;
 		for (int i = 0; i < this.minas; i++) 
 		{
-			int v[]=rng.getRandomNumber();
-	    	
-			int aleatorioX= v[0];
-			int aleatorioY = v[1];
+			 
+			 v=rng.getRandomNumber();
+			 aleatorioX= v[0];
+			 aleatorioY = v[1];
+			 
+			 while((aleatorioX > 7 || aleatorioX < 0 || aleatorioY > 7 || aleatorioY < 0))
+			 {
+				 v=rng.getRandomNumber();
+				 aleatorioX= v[0];
+				 aleatorioY = v[1];
+				 
+			 }
 			
-			if (this.tablero_minas[aleatorioX][aleatorioY] == null) {
-				this.tablero_minas[aleatorioX][aleatorioY] = "X";}
+			if (this.tablero_minas[aleatorioX][aleatorioY] == null)
+			{
+				this.tablero_minas[aleatorioX][aleatorioY] = "X";
+			}
 		}
 	}
 	
