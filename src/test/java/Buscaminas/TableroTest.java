@@ -43,21 +43,64 @@ public class TableroTest {
 	@Test
 	public void compruebaMinasTest() {
 		
-		TableroMock tablero = new TableroMock();
-		tablero.insertaMina(2, 2);
-		tablero.insertaMina(4, 5);
-				
+
+		Tablero tablero =  new Tablero();
+		MockRNG mRNG= new MockRNG();
+		tablero.setRNG(mRNG);
+		mRNG.setConfig(0);
+		tablero.inicializarMinasTest();
+		
 		Movimiento movimiento = new Movimiento();
-		assertTrue(movimiento.validaMovimiento(3, "c"));	
+		movimiento.validaMovimiento(1, "A");	
+		assertTrue(tablero.compruebaMinas(movimiento));		
+
+		 movimiento = new Movimiento();
+		movimiento.validaMovimiento(1, "B");		
 		assertTrue(tablero.compruebaMinas(movimiento));
 		
-		Movimiento movimiento2 = new Movimiento();
-		assertTrue(movimiento2.validaMovimiento(1, "b"));		
-		assertFalse(tablero.compruebaMinas(movimiento2));
+		 movimiento = new Movimiento();
+		movimiento.validaMovimiento(2, "H");	
+		assertTrue(tablero.compruebaMinas(movimiento));
 		
-		Movimiento movimiento3 = new Movimiento();
-		assertTrue(movimiento3.validaMovimiento(5, "F"));
-		assertTrue(tablero.compruebaMinas(movimiento3));
+		 movimiento = new Movimiento();
+		movimiento.validaMovimiento(1, "H");		
+		assertTrue(tablero.compruebaMinas(movimiento));
+		
+		 movimiento = new Movimiento();
+		movimiento.validaMovimiento(8, "A");	
+		assertTrue(tablero.compruebaMinas(movimiento));
+		
+		 movimiento = new Movimiento();
+		movimiento.validaMovimiento(8, "B");			
+		assertTrue(tablero.compruebaMinas(movimiento));
+		
+		 movimiento = new Movimiento();
+		movimiento.validaMovimiento(7, "H");	
+		assertTrue(tablero.compruebaMinas(movimiento));
+		
+		 movimiento = new Movimiento();
+		movimiento.validaMovimiento(8, "H");		
+		assertTrue(tablero.compruebaMinas(movimiento));
+		
+		
+		
+		 movimiento = new Movimiento();
+		movimiento.validaMovimiento(2, "A");
+		assertFalse(tablero.compruebaMinas(movimiento));
+		
+		 movimiento = new Movimiento();
+		movimiento.validaMovimiento(1, "G");
+		assertFalse(tablero.compruebaMinas(movimiento));
+		
+		 movimiento = new Movimiento();
+		movimiento.validaMovimiento(7, "A");
+		assertFalse(tablero.compruebaMinas(movimiento));
+		
+		 movimiento = new Movimiento();
+		movimiento.validaMovimiento(8, "G");
+		assertFalse(tablero.compruebaMinas(movimiento));
+		
+
 	}
 	
 	@Test
