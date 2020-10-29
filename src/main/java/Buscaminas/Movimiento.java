@@ -11,14 +11,19 @@ public class Movimiento {
 		this.accion = null;
 	}
 	
-	public boolean validaFila(int fila) {
+	public boolean validaFila(String fila) {
 		boolean correcto = false;
 		
-		if (fila <= 8 && fila >= 1) {
-			correcto = true;
-			this.fila = fila-1;
-		}
-		
+		try {
+			int fila_integer = Integer.parseInt(fila);
+			
+			if (fila_integer <= 8 && fila_integer >= 1) {
+				correcto = true;
+				this.fila = fila_integer-1;
+			}
+		}catch(NumberFormatException nfe) {
+			correcto = false;
+		} 
 		return correcto;
 	}
 	
@@ -65,7 +70,7 @@ public class Movimiento {
 		
 		return correcto;
 	}
-	public boolean validaMovimiento(int fila, String columna) {
+	public boolean validaMovimiento(String fila, String columna) {
 		boolean correcto = false;
 		
 		if (this.validaFila(fila) && this.validaColumna(columna)) {

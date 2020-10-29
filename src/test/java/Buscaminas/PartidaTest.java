@@ -24,7 +24,7 @@ public class PartidaTest {
 	@Test
 	public void Partida1Test() {
 		Movimiento movimiento = new Movimiento();
-		movimiento.validaMovimiento(0, "A");
+		movimiento.validaMovimiento("0", "A");
 		movimiento.validaAccion("A");
 	}
 }

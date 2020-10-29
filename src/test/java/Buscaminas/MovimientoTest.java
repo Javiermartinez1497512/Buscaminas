@@ -15,13 +15,13 @@ public class MovimientoTest {
 		Movimiento movimiento = new Movimiento();
 		
 		
-		assertTrue(movimiento.validaFila(1));
-		assertTrue(movimiento.validaFila(2));
-		assertTrue(movimiento.validaFila(7));
-		assertTrue(movimiento.validaFila(8));
-		assertFalse(movimiento.validaFila(9));
-		assertFalse(movimiento.validaFila(0));
-		assertFalse(movimiento.validaFila(-1));
+		assertTrue(movimiento.validaFila("1"));
+		assertTrue(movimiento.validaFila("2"));
+		assertTrue(movimiento.validaFila("7"));
+		assertTrue(movimiento.validaFila("8"));
+		assertFalse(movimiento.validaFila("9"));
+		assertFalse(movimiento.validaFila("0"));
+		assertFalse(movimiento.validaFila("-1"));
 	}
 	
 	@Test
@@ -52,39 +52,39 @@ public class MovimientoTest {
 	public void validaMovimiento() {
 		Movimiento movimiento = new Movimiento();
 		
-		assertFalse(movimiento.validaMovimiento(9,"?"));
-		assertFalse(movimiento.validaMovimiento(9,"a"));
-		assertFalse(movimiento.validaMovimiento(9,"A"));
-		assertFalse(movimiento.validaMovimiento(4,"?"));
-		assertFalse(movimiento.validaMovimiento(4,"aa"));
-		assertFalse(movimiento.validaMovimiento(4,"AA"));
-		assertFalse(movimiento.validaMovimiento(4,"X"));
-		assertFalse(movimiento.validaMovimiento(4,"x"));
+		assertFalse(movimiento.validaMovimiento("9","?"));
+		assertFalse(movimiento.validaMovimiento("9","a"));
+		assertFalse(movimiento.validaMovimiento("9","A"));
+		assertFalse(movimiento.validaMovimiento("4","?"));
+		assertFalse(movimiento.validaMovimiento("4","aa"));
+		assertFalse(movimiento.validaMovimiento("4","AA"));
+		assertFalse(movimiento.validaMovimiento("4","X"));
+		assertFalse(movimiento.validaMovimiento("4","x"));
 
-		assertTrue(movimiento.validaMovimiento(1,"A"));
-		assertTrue(movimiento.validaMovimiento(1,"B"));
-		assertTrue(movimiento.validaMovimiento(2,"A"));
-		assertFalse(movimiento.validaMovimiento(-1,"A"));
-		assertFalse(movimiento.validaMovimiento(1,"?"));
+		assertTrue(movimiento.validaMovimiento("1","A"));
+		assertTrue(movimiento.validaMovimiento("1","B"));
+		assertTrue(movimiento.validaMovimiento("2","A"));
+		assertFalse(movimiento.validaMovimiento("-1","A"));
+		assertFalse(movimiento.validaMovimiento("1","?"));
 		
 		
-		assertTrue(movimiento.validaMovimiento(1,"h"));
-		assertTrue(movimiento.validaMovimiento(1,"h"));
-		assertTrue(movimiento.validaMovimiento(2,"g"));
-		assertFalse(movimiento.validaMovimiento(-1,"h"));
-		assertFalse(movimiento.validaMovimiento(1,"i"));
+		assertTrue(movimiento.validaMovimiento("1","h"));
+		assertTrue(movimiento.validaMovimiento("1","h"));
+		assertTrue(movimiento.validaMovimiento("2","g"));
+		assertFalse(movimiento.validaMovimiento("-1","h"));
+		assertFalse(movimiento.validaMovimiento("1","i"));
 		
-		assertTrue(movimiento.validaMovimiento(7,"A"));
-		assertTrue(movimiento.validaMovimiento(8,"B"));
-		assertTrue(movimiento.validaMovimiento(8,"A"));		
-		assertFalse(movimiento.validaMovimiento(9,"A"));
-		assertFalse(movimiento.validaMovimiento(8,"?"));
+		assertTrue(movimiento.validaMovimiento("7","A"));
+		assertTrue(movimiento.validaMovimiento("8","B"));
+		assertTrue(movimiento.validaMovimiento("8","A"));		
+		assertFalse(movimiento.validaMovimiento("9","A"));
+		assertFalse(movimiento.validaMovimiento("8","?"));
 		
-		assertTrue(movimiento.validaMovimiento(7,"h"));
-		assertTrue(movimiento.validaMovimiento(8,"h"));
-		assertTrue(movimiento.validaMovimiento(8,"g"));
-		assertFalse(movimiento.validaMovimiento(9,"H"));
-		assertFalse(movimiento.validaMovimiento(8,"i"));
+		assertTrue(movimiento.validaMovimiento("7","h"));
+		assertTrue(movimiento.validaMovimiento("8","h"));
+		assertTrue(movimiento.validaMovimiento("8","g"));
+		assertFalse(movimiento.validaMovimiento("9","H"));
+		assertFalse(movimiento.validaMovimiento("8","i"));
 	}
 	
 	@Test

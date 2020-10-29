@@ -7,14 +7,13 @@ public class Tablero {
     private int tamanoX = 8;
     private int tamanoY = 8;
     private int minas = 8;
-    private MockRNG rng;
+    private RNG rng;
+    private int casillasRestantes = this.tamanoX*this.tamanoY-this.minas;
 
     public Tablero() {
         this.tablero_minas = new String[this.tamanoX][this.tamanoY];
         this.tablero = new String[this.tamanoX][this.tamanoY];
-        this.iniciarTablero();
-
-        
+        this.iniciarTablero(); 
     }
     
     public void iniciarTablero() {
@@ -24,35 +23,40 @@ public class Tablero {
 			}
 		}
     }
+    
+    public boolean compruebaGanador() {
+    	boolean ganador = false;
+    	
+    	if (this.casillasRestantes == this.minas) {
+    		ganador = true;
+    	}
+    	
+    	return ganador;
+    }
 
 	private void inicializarMinas() {
 		
 		int v[];
 		int aleatorioX, aleatorioY;
-		for (int i = 0; i < this.minas; i++) 
-		{
-			 
+		for (int i = 0; i < this.minas; i++) {
 			 v=rng.getRandomNumber();
 			 aleatorioX= v[0];
 			 aleatorioY = v[1];
 			 
-			 while((aleatorioX > 7 || aleatorioX < 0 || aleatorioY > 7 || aleatorioY < 0))
-			 {
+			 while((aleatorioX > 7 || aleatorioX < 0 || aleatorioY > 7 || aleatorioY < 0)){
 				 v=rng.getRandomNumber();
 				 aleatorioX= v[0];
 				 aleatorioY = v[1];
-				 
 			 }
 			
-			if (this.tablero_minas[aleatorioX][aleatorioY] == null)
-			{
+			if (this.tablero_minas[aleatorioX][aleatorioY] == null){
 				this.tablero_minas[aleatorioX][aleatorioY] = "X";
 			}
 		}
 	}
-	
-	public void inicializarMinasTest() {
-		
+	public void iniciarMinasAleatorias() {
+		AleatorioRNG rng = new AleatorioRNG();
+		this.setRNG(rng);
 		this.inicializarMinas();
 	}
 	
@@ -70,13 +74,13 @@ public class Tablero {
 		return pintar;
 	}
 	
-	public void actualizar(Movimiento movimiento) {
+	private void actualizar(Movimiento movimiento) {
 		switch(movimiento.getAccion()) {
 		case("A"):
 			if(this.tablero[movimiento.getFila()][movimiento.getColumna()] == " ") {
 				int vecinos = proxyCuentaVecinos(movimiento.getFila(),movimiento.getColumna());
 				this.tablero[movimiento.getFila()][movimiento.getColumna()] = Integer.toString(vecinos);
-				//this.tablero[movimiento.getFila()][movimiento.getColumna()] = "A";
+				this.casillasRestantes--;
 			}
 			break;
 		case("M"):
@@ -91,20 +95,23 @@ public class Tablero {
 			break;
 		}
 	}
-	public void setRNG(MockRNG r) {
-		
+	public void setRNG(RNG r) {
 		this.rng=r;
 	}
+	
 	public String getPos(int x, int y) {
 		return this.tablero_minas[x][y];
 	}
-	public int getTamano()
-	{
+	
+	public int getTamano()	{
 		return this.tamanoX;
 	}
 	
+	public String getPosicionTablero(int x, int y) {
+		return this.tablero[x][y];
+	}
 	
-	public boolean compruebaMinas(Movimiento movimiento) {
+	private boolean compruebaMinas(Movimiento movimiento) {
 		boolean mina = false;
 		 
 		if (tablero_minas[movimiento.getFila()][movimiento.getColumna()]=="X") {
@@ -326,9 +333,17 @@ public class Tablero {
 		return contador;
 	}
 	
+	
+	
 	//Metodos Proxy
 	public int proxyCuentaVecinos(int fila, int columna) {
 		int vecinos = this.cuentaVecinos(fila, columna); 
 		return vecinos;
+	}
+	public boolean proxyCompruebaMinas(Movimiento movimiento) {
+		return this.compruebaMinas(movimiento);
+	}
+	public void proxyInicializarMinas() {
+		this.inicializarMinas();
 	}
 }

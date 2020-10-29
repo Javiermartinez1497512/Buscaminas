@@ -1,10 +1,9 @@
 
 package Buscaminas;
 
-public class RNG extends Tablero {
+public interface RNG {
 	
-	int[] getRandomNumber() {
-		int [] v= {(int) (Math.random()*this.getTamano()),(int) (Math.random()*this.getTamano())};
-		return v;
-	}
+	int[] getRandomNumber();
 }
+
+/**/

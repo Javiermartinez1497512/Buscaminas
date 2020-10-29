@@ -11,6 +11,8 @@ public class Partida {
 	public Partida() {
 		this.perdido = false;
 		this.tablero = new Tablero();
+		this.tablero.iniciarMinasAleatorias();
+		
 	}
 
 	public boolean seguir() {
@@ -27,21 +29,18 @@ public class Partida {
 
 		System.out.println("Empieza la partida");
 		System.out.println();
-		tablero.pintar();
+		System.out.println(tablero.pintar());
 
-		while (!this.seguir()) {
+		while (!this.seguir() || this.tablero.compruebaGanador()) {
 			System.out.print("Introduce el numero de fila [1-8]: ");
 			String x = reader.readLine();
 			System.out.print("Introduce la letra de fila [A-H]: ");
 			String y = reader.readLine();
 			System.out.println();
 
-			// Convertimos el numero de fila a String
-			int x_toInt = Integer.parseInt(x);
-
 			Movimiento movimiento = new Movimiento();
 
-			if (movimiento.validaMovimiento(x_toInt, y)) {
+			if (movimiento.validaMovimiento(x, y)) {
 				System.out.print("Introduce una acción a realizar A[Abrir], M[Marcar], D[Desmarcar], C[Cancelar]: ");
 				String accion = reader.readLine();
 				
@@ -53,18 +52,21 @@ public class Partida {
 						System.out.println("GAME OVER :(");
 						this.noSeguir();
 					}else {
-						tablero.pintar();
+						System.out.println(tablero.pintar());
 					}
 				}else {
 					System.out.println("ERR3: Introduce Introduce una acción permitida (A, M, D, C).");
 				}	
 			}else {
-				if (!movimiento.validaFila(x_toInt)) {
+				if (!movimiento.validaFila(x)) {
 					System.out.println("ERR1: Introduce un valor entre 1 y 8.");
 				}else if (!movimiento.validaColumna(y)) {
 					System.out.println("ERR2: Introduce una letra entre A y H.");
 				}
 			}
+		}
+		if (tablero.compruebaGanador()) {
+			System.out.println("YOU WIN!!!!!");
 		}
 	}
 
