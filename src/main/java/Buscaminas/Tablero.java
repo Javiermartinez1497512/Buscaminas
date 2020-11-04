@@ -23,18 +23,8 @@ public class Tablero {
 			}
 		}
     }
-    
-    public boolean compruebaGanador() {
-    	boolean ganador = false;
-    	
-    	if (this.casillasRestantes == this.minas) {
-    		ganador = true;
-    	}
-    	
-    	return ganador;
-    }
 
-	private void inicializarMinas() {
+    public void inicializarMinas() {
 		
 		int v[];
 		int aleatorioX, aleatorioY;
@@ -73,6 +63,15 @@ public class Tablero {
 		}
 		return pintar;
 	}
+	public boolean compruebaGanador() {
+    	boolean ganador = false;
+    	
+    	if (this.casillasRestantes == this.minas) {
+    		ganador = true;
+    	}
+    	
+    	return ganador;
+    }
 	
 	private void actualizar(Movimiento movimiento) {
 		switch(movimiento.getAccion()) {
@@ -99,6 +98,9 @@ public class Tablero {
 		this.rng=r;
 	}
 	
+    public String[][] getTablero() {
+  		return tablero;
+      }
 	public String getPos(int x, int y) {
 		return this.tablero_minas[x][y];
 	}
@@ -343,7 +345,5 @@ public class Tablero {
 	public boolean proxyCompruebaMinas(Movimiento movimiento) {
 		return this.compruebaMinas(movimiento);
 	}
-	public void proxyInicializarMinas() {
-		this.inicializarMinas();
-	}
+
 }

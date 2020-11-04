@@ -11,7 +11,10 @@ public class Partida {
 	public Partida() {
 		this.perdido = false;
 		this.tablero = new Tablero();
-		this.tablero.iniciarMinasAleatorias();
+		MockRNG mRNG= new MockRNG();
+		tablero.setRNG(mRNG);
+		mRNG.setConfig(0);
+		this.tablero.inicializarMinas();
 		
 	}
 
@@ -41,7 +44,7 @@ public class Partida {
 			Movimiento movimiento = new Movimiento();
 
 			if (movimiento.validaMovimiento(x, y)) {
-				System.out.print("Introduce una acción a realizar A[Abrir], M[Marcar], D[Desmarcar], C[Cancelar]: ");
+				System.out.print("Introduce una accion a realizar A[Abrir], M[Marcar], D[Desmarcar], C[Cancelar]: ");
 				String accion = reader.readLine();
 				
 				if (movimiento.validaAccion(accion)) {
@@ -55,7 +58,7 @@ public class Partida {
 						System.out.println(tablero.pintar());
 					}
 				}else {
-					System.out.println("ERR3: Introduce Introduce una acción permitida (A, M, D, C).");
+					System.out.println("ERR3: Introduce Introduce una accion permitida (A, M, D, C).");
 				}	
 			}else {
 				if (!movimiento.validaFila(x)) {

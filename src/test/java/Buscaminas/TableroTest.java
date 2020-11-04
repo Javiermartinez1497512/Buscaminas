@@ -5,16 +5,33 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class TableroTest {
-		
+	@SuppressWarnings("deprecation")
+	@Test
+	public void iniciarTableroTest() {
+		Tablero tablero =  new Tablero();
+		String[][] tableroesperado = {
+				{" "," "," "," "," "," "," "," "},
+				{" "," "," "," "," "," "," "," "},
+				{" "," "," "," "," "," "," "," "},
+				{" "," "," "," "," "," "," "," "},
+				{" "," "," "," "," "," "," "," "},
+				{" "," "," "," "," "," "," "," "},
+				{" "," "," "," "," "," "," "," "},
+				{" "," "," "," "," "," "," "," "}
 
+		};
+		
+		assertEquals(tablero.getTablero(), tableroesperado);
+		
+	}
 	@Test
 	public void inicializarMinasTest() {	
 		Tablero tablero =  new Tablero();
-		MockRNG mRNG= new MockRNG();
+		RNG mRNG= new MockRNG();
 		tablero.setRNG(mRNG);
 		mRNG.setConfig(0);
 		
-		tablero.proxyInicializarMinas();
+		tablero.inicializarMinas();
 		
 		assertEquals(tablero.getPos(0, 0), "X");
 		assertEquals(tablero.getPos(0, 1), "X");
@@ -38,11 +55,11 @@ public class TableroTest {
 	@Test
 	public void compruebaMinasTest() {
 		Tablero tablero =  new Tablero();
-		MockRNG mRNG= new MockRNG();
+		RNG mRNG= new MockRNG();
 		tablero.setRNG(mRNG);
 		mRNG.setConfig(0);
 		
-		tablero.proxyInicializarMinas();
+		tablero.inicializarMinas();
 		
 		Movimiento movimiento = new Movimiento();
 		movimiento.validaMovimiento("1", "A");	
@@ -96,11 +113,11 @@ public class TableroTest {
 	@Test
 	public void aplicaAccionTest() {
 		Tablero tablero = new Tablero();
-		MockRNG mRNG= new MockRNG();
+		RNG mRNG= new MockRNG();
 		tablero.setRNG(mRNG);
 		mRNG.setConfig(0);
 		
-		tablero.proxyInicializarMinas();
+		tablero.inicializarMinas();
 		
 		//Encontramos mina
 		Movimiento movimiento = new Movimiento();
@@ -141,11 +158,11 @@ public class TableroTest {
 	@Test
 	public void cuentaVecinosTest() {		
 		Tablero tablero = new Tablero();
-		MockRNG mRNG= new MockRNG();
+		RNG mRNG= new MockRNG();
 		tablero.setRNG(mRNG);
 		mRNG.setConfig(0);
 		
-		tablero.proxyInicializarMinas();
+		tablero.inicializarMinas();
 		
 		//res0_0 Mina
 		//res0_1 Mina
