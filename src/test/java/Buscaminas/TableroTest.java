@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class TableroTest {
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void iniciarTableroTest() {
 		Tablero tablero =  new Tablero();
@@ -109,7 +109,28 @@ public class TableroTest {
 		movimiento.validaMovimiento("8", "G");
 		assertFalse(tablero.proxyCompruebaMinas(movimiento));
 	}
-	
+	@Test 
+	public void CompruebaGanadorTest()
+	{
+		Tablero tablero = new Tablero();
+		RNG mRNG= new MockRNG();
+		tablero.setRNG(mRNG);
+		mRNG.setConfig(0);		
+		tablero.inicializarMinas();
+		
+		tablero.setCasillasRestantes(8);		
+		assertTrue(tablero.compruebaGanador());
+		
+		tablero.setCasillasRestantes(7);
+		assertFalse(tablero.compruebaGanador());
+		
+		tablero.setCasillasRestantes(9);
+		assertFalse(tablero.compruebaGanador());
+		
+		tablero.setCasillasRestantes(-1);
+		assertFalse(tablero.compruebaGanador());
+		
+	}
 	@Test
 	public void aplicaAccionTest() {
 		Tablero tablero = new Tablero();

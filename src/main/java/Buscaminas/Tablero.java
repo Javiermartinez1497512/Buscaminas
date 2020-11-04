@@ -97,6 +97,9 @@ public class Tablero {
 	public void setRNG(RNG r) {
 		this.rng=r;
 	}
+	public void setCasillasRestantes(int restantes) {
+		this.casillasRestantes=restantes;
+	}
 	
     public String[][] getTablero() {
   		return tablero;
