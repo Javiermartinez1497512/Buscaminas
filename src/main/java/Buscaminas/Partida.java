@@ -1,12 +1,9 @@
 package Buscaminas;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class Partida {
 	private boolean perdido;
 	private Tablero tablero;
+	private BufferedReaderInterface reader;
 
 	public Partida() {
 		this.perdido = false;
@@ -25,10 +22,12 @@ public class Partida {
 	public void noSeguir() {
 		this.perdido = true;
 	}
+	public void setBufferedReader(BufferedReaderInterface r) {
+		this.reader=r;
+	}
 
-	public void iniciar() throws IOException {
+	public void iniciar() throws Exception {
 		// Objeto para leer por teclado.
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 		System.out.println("Empieza la partida");
 		System.out.println();
@@ -36,16 +35,16 @@ public class Partida {
 
 		while (!this.seguir() || this.tablero.compruebaGanador()) {
 			System.out.print("Introduce el numero de fila [1-8]: ");
-			String x = reader.readLine();
+			String x = reader.read();
 			System.out.print("Introduce la letra de fila [A-H]: ");
-			String y = reader.readLine();
+			String y = reader.read();
 			System.out.println();
 
 			Movimiento movimiento = new Movimiento();
 
 			if (movimiento.validaMovimiento(x, y)) {
 				System.out.print("Introduce una accion a realizar A[Abrir], M[Marcar], D[Desmarcar], C[Cancelar]: ");
-				String accion = reader.readLine();
+				String accion = reader.read();
 				
 				if (movimiento.validaAccion(accion)) {
 					//Aqui tocaria ya comprobar cosas con el tablero.
@@ -73,8 +72,10 @@ public class Partida {
 		}
 	}
 
-	public static void main(String [] args) throws IOException {
+	public static void main(String [] args) throws Exception {
 		Partida partida = new Partida();
+		BufferedReaderInterface mockBufferReader= new MockBufferedReader();
+		partida.setBufferedReader(mockBufferReader);
 		partida.iniciar();
 	}
 }

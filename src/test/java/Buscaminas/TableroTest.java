@@ -21,7 +21,7 @@ public class TableroTest {
 
 		};
 		
-		assertEquals(tablero.getTablero(), tableroesperado);
+		assertEquals(tableroesperado,tablero.getTablero() );
 		
 	}
 	@Test

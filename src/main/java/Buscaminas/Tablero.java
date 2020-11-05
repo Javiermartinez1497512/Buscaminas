@@ -32,24 +32,14 @@ public class Tablero {
 			 v=rng.getRandomNumber();
 			 aleatorioX= v[0];
 			 aleatorioY = v[1];
-			 
-			 while((aleatorioX > 7 || aleatorioX < 0 || aleatorioY > 7 || aleatorioY < 0)){
-				 v=rng.getRandomNumber();
-				 aleatorioX= v[0];
-				 aleatorioY = v[1];
-			 }
-			
+			 			
 			if (this.tablero_minas[aleatorioX][aleatorioY] == null){
 				this.tablero_minas[aleatorioX][aleatorioY] = "X";
 			}
+			else if(this.tablero_minas[aleatorioX][aleatorioY] == "X") 
+				i--;
 		}
 	}
-	public void iniciarMinasAleatorias() {
-		AleatorioRNG rng = new AleatorioRNG();
-		this.setRNG(rng);
-		this.inicializarMinas();
-	}
-	
 	public String pintar() {
 		String pintar = "";
 		pintar+="   A B C D E F G H\n";
