@@ -3,8 +3,8 @@ package Buscaminas;
 
 public interface RNG {
 	
-	 int[] getRandomNumber() ;
-	 void setConfig(int c);
+	 public int[] getRandomNumber();
+ 	 public void setConfig(int c);
 }
 
 /**/

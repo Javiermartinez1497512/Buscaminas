@@ -338,5 +338,28 @@ public class Tablero {
 	public boolean proxyCompruebaMinas(Movimiento movimiento) {
 		return this.compruebaMinas(movimiento);
 	}
-
+	public int proxyCuentaArribaIzquierda() {
+		return this.cuentaArribaIzquierda();
+	}
+	public int proxyCuentaArribaDerecha() {
+		return this.cuentaArribaDerecha();
+	}
+	public int proxyCuentaAbajoIzquierda() {
+		return this.cuentaAbajoIzquierda();
+	}
+	public int proxyCuentaAbajoDerecha() {
+		return this.cuentaAbajoDerecha();
+	}
+	public int proxyCuentaArriba(int columna) {
+		return this.cuentaArriba(columna);
+	}
+	public int proxyCuentaAbajo(int columna) {
+		return this.cuentaAbajo(columna);
+	}
+	public int proxyCuentaIzquierda(int fila) {
+		return this.cuentaIzquierda(fila);
+	}
+	public int proxyCuentaDerecha(int fila) {
+		return this.cuentaDerecha(fila);
+	}
 }

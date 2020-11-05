@@ -68,17 +68,17 @@ public class Partida {
 				}
 			}
 		}
+		boolean ganador = false;
 		if (tablero.compruebaGanador()) {
 			System.out.println("YOU WIN!!!!!");
-			return true;
+			ganador = true;
 		}
-		return false;
+		return ganador;
 	}
 
 	public static void main(String [] args) throws Exception {
 		Partida partida = new Partida();
 		BufferedReaderInterface mockBufferReader= new MockBufferedReader();
 		partida.setBufferedReader(mockBufferReader);
-		boolean guanyat=partida.iniciar();
 	}
 }

@@ -6,10 +6,11 @@ public class AleatorioRNG implements RNG{
 		int [] v= {(int) (Math.random()*8),(int) (Math.random()*8)};
 		return v;
 	}
+	public int[] getRandomNumber2() {
+		int [] v= {(int) (Math.random()*8),(int) (Math.random()*8)};
+		return v;
+	}
 
 	@Override
-	public void setConfig(int c) {
-
-		
-	}
+	public void setConfig(int c) {}
 }
