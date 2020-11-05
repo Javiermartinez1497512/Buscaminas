@@ -49,7 +49,7 @@ public class MovimientoTest {
 	}
 	
 	@Test
-	public void validaMovimiento() {
+	public void validaMovimientoTest() {
 		Movimiento movimiento = new Movimiento();
 		
 		assertFalse(movimiento.validaMovimiento("9","?"));
@@ -88,7 +88,7 @@ public class MovimientoTest {
 	}
 	
 	@Test
-	public void validaAccion() {
+	public void validaAccionTest() {
 		Movimiento movimiento = new Movimiento();
 		assertTrue(movimiento.validaAccion("A"));
 		assertTrue(movimiento.validaAccion("M"));
