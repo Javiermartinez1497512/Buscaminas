@@ -56,7 +56,7 @@ public class Tablero {
 	public boolean compruebaGanador() {
     	boolean ganador = false;
     	
-    	if (this.casillasRestantes == this.minas) {
+    	if (this.casillasRestantes == 0) {
     		ganador = true;
     	}
     	
@@ -69,7 +69,7 @@ public class Tablero {
 			if(this.tablero[movimiento.getFila()][movimiento.getColumna()] == " ") {
 				int vecinos = proxyCuentaVecinos(movimiento.getFila(),movimiento.getColumna());
 				this.tablero[movimiento.getFila()][movimiento.getColumna()] = Integer.toString(vecinos);
-				this.casillasRestantes--;
+				this.setCasillasRestantes(this.casillasRestantes--);
 			}
 			break;
 		case("M"):

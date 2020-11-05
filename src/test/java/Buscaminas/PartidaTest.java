@@ -20,4 +20,13 @@ public class PartidaTest {
 		partida.noSeguir();
 		assertTrue(partida.seguir());
 	}
+	public void iniciarTest() throws Exception {
+		
+		Partida partida = new Partida();
+		BufferedReaderInterface mockBufferReader= new MockBufferedReader();
+		partida.setBufferedReader(mockBufferReader);
+		
+		assertTrue(partida.iniciar());
+		
+	}
 }

@@ -26,7 +26,7 @@ public class Partida {
 		this.reader=r;
 	}
 
-	public void iniciar() throws Exception {
+	public boolean iniciar() throws Exception {
 		// Objeto para leer por teclado.
 
 		System.out.println("Empieza la partida");
@@ -53,6 +53,7 @@ public class Partida {
 					if (mina) {
 						System.out.println("GAME OVER :(");
 						this.noSeguir();
+						
 					}else {
 						System.out.println(tablero.pintar());
 					}
@@ -69,13 +70,15 @@ public class Partida {
 		}
 		if (tablero.compruebaGanador()) {
 			System.out.println("YOU WIN!!!!!");
+			return true;
 		}
+		return false;
 	}
 
 	public static void main(String [] args) throws Exception {
 		Partida partida = new Partida();
 		BufferedReaderInterface mockBufferReader= new MockBufferedReader();
 		partida.setBufferedReader(mockBufferReader);
-		partida.iniciar();
+		boolean guanyat=partida.iniciar();
 	}
 }
