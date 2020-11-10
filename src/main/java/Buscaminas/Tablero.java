@@ -2,8 +2,8 @@ package Buscaminas;
 
 public class Tablero {
 	
-    protected String[][] tablero_minas;
-    protected String[][] tablero;
+    private String[][] tablero_minas;
+    private String[][] tablero;
     private int tamanoX = 8;
     private int tamanoY = 8;
     private int minas = 8;
