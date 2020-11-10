@@ -9,24 +9,54 @@ public class PartidaTest {
 	
 	@Test
 	public void seguirTest() {
-		Partida partida = new Partida();
+		RNG mRNG= new MockRNG();		
+		mRNG.setConfig(0);
+		Partida partida = new Partida(mRNG);
 		assertFalse(partida.seguir());
 	}
 	
 	@Test
 	public void noSeguirTest() {
-		Partida partida = new Partida();
+		
+		RNG mRNG= new MockRNG();		
+		mRNG.setConfig(0);
+		Partida partida = new Partida(mRNG);
 		assertFalse(partida.seguir());
 		partida.noSeguir();
 		assertTrue(partida.seguir());
 	}
+	@Test
 	public void iniciarTest() throws Exception {
-		
-		Partida partida = new Partida();
+		RNG mRNG= new MockRNG();				
 		BufferedReaderInterface mockBufferReader= new MockBufferedReader();
-		partida.setBufferedReader(mockBufferReader);
 		
+		mRNG.setConfig(0);
+		Partida partida = new Partida(mRNG);
+		partida.setBufferedReader(mockBufferReader);		
+		mockBufferReader.setConfig(1);			
+		assertFalse(partida.iniciar());
+		
+		mRNG.setConfig(0);
+		partida = new Partida(mRNG);
+		partida.setBufferedReader(mockBufferReader);		
+		mockBufferReader.setConfig(2);			
+		assertFalse(partida.iniciar());
+		
+		mRNG.setConfig(0);
+		partida = new Partida(mRNG);
+		partida.setBufferedReader(mockBufferReader);
+		mockBufferReader.setConfig(0);			
 		assertTrue(partida.iniciar());
 		
+		mRNG.setConfig(0);
+		partida = new Partida(mRNG);
+		partida.setBufferedReader(mockBufferReader);
+		mockBufferReader.setConfig(3);			
+		assertTrue(partida.iniciar());
+		
+		
+		
+		
+	
 	}
 }

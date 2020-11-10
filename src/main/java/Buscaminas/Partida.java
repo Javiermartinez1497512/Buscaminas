@@ -5,12 +5,10 @@ public class Partida {
 	private Tablero tablero;
 	private BufferedReaderInterface reader;
 
-	public Partida() {
+	public Partida(RNG RandomNumberGenerator) {
 		this.perdido = false;
 		this.tablero = new Tablero();
-		MockRNG mRNG= new MockRNG();
-		tablero.setRNG(mRNG);
-		mRNG.setConfig(0);
+		tablero.setRNG(RandomNumberGenerator);
 		this.tablero.inicializarMinas();
 		
 	}
@@ -77,8 +75,15 @@ public class Partida {
 	}
 
 	public static void main(String [] args) throws Exception {
-		Partida partida = new Partida();
-		BufferedReaderInterface mockBufferReader= new MockBufferedReader();
-		partida.setBufferedReader(mockBufferReader);
+		
+		RNG mRNG= new MockRNG();		
+		mRNG.setConfig(0);
+		Partida partida = new Partida(mRNG);
+		
+		BufferedReaderInterface BufferReader= new BufferedReaderManual();
+		partida.setBufferedReader(BufferReader);
+		
+		partida.iniciar();
+		
 	}
 }

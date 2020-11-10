@@ -12,4 +12,10 @@ public class BufferedReaderManual implements BufferedReaderInterface {
 		return s;
 	}
 
+	@Override
+	public void setConfig(int c) {
+		
+		
+	}
+
 }
