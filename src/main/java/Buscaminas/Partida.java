@@ -33,7 +33,7 @@ public class Partida {
 		System.out.println();
 		System.out.println(tablero.pintar());
 
-		while (!this.seguir() || this.tablero.compruebaGanador()) {
+		while (!this.seguir() && !this.tablero.compruebaGanador()) {
 			System.out.print("Introduce el numero de fila [1-8]: ");
 			String x = reader.read();
 			System.out.print("Introduce la letra de fila [A-H]: ");
