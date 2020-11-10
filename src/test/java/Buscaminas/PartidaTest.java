@@ -53,10 +53,5 @@ public class PartidaTest {
 		partida.setBufferedReader(mockBufferReader);
 		mockBufferReader.setConfig(3);			
 		assertTrue(partida.iniciar());
-		
-		
-		
-		
-	
 	}
 }

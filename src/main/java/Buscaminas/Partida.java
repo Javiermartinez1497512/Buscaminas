@@ -76,9 +76,8 @@ public class Partida {
 
 	public static void main(String [] args) throws Exception {
 		
-		RNG mRNG= new MockRNG();		
-		mRNG.setConfig(0);
-		Partida partida = new Partida(mRNG);
+		RNG rng= new AleatorioRNG();		
+		Partida partida = new Partida(rng);
 		
 		BufferedReaderInterface BufferReader= new BufferedReaderManual();
 		partida.setBufferedReader(BufferReader);

@@ -7,8 +7,8 @@ public class BufferedReaderManual implements BufferedReaderInterface {
 
 
 	public String read() throws Exception {
-		 BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-		 String s = r.readLine();
+		BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
+		String s = r.readLine();
 		return s;
 	}
 

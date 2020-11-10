@@ -253,9 +253,9 @@ public class TableroTest {
 		
 		/* Versión de Mock 2 */
 		tablero = new Tablero();
-		RNG mRNG2= new MockRNG_2();
+		RNG mRNG2= new MockRNG();
 		tablero.setRNG(mRNG2);
-		mRNG2.setConfig(0);
+		mRNG2.setConfig(8);
 		
 		tablero.inicializarMinas();
 		
@@ -332,9 +332,9 @@ public class TableroTest {
 	@Test
 	public void cuentaArribaIzquierdaTest() {
 		Tablero tablero = new Tablero();
-		RNG mRNG= new MockRNG_2();
+		RNG mRNG= new MockRNG();
 		tablero.setRNG(mRNG);
-		mRNG.setConfig(0);
+		mRNG.setConfig(8);
 		
 		tablero.inicializarMinas();
 		
@@ -344,9 +344,9 @@ public class TableroTest {
 	@Test
 	public void cuentaArribaDerechaTest() {
 		Tablero tablero = new Tablero();
-		RNG mRNG= new MockRNG_2();
+		RNG mRNG= new MockRNG();
 		tablero.setRNG(mRNG);
-		mRNG.setConfig(0);
+		mRNG.setConfig(8);
 		
 		tablero.inicializarMinas();
 		int res_0 = tablero.proxyCuentaArribaDerecha();
@@ -355,9 +355,9 @@ public class TableroTest {
 	@Test
 	public void cuentaAbajoIzquierdaTest() {
 		Tablero tablero = new Tablero();
-		RNG mRNG= new MockRNG_2();
+		RNG mRNG= new MockRNG();
 		tablero.setRNG(mRNG);
-		mRNG.setConfig(0);
+		mRNG.setConfig(8);
 		
 		tablero.inicializarMinas();
 		int res_0 = tablero.proxyCuentaAbajoIzquierda();
@@ -366,9 +366,9 @@ public class TableroTest {
 	@Test
 	public void cuentaAbajoDerechaTest() {
 		Tablero tablero = new Tablero();
-		RNG mRNG= new MockRNG_2();
+		RNG mRNG= new MockRNG();
 		tablero.setRNG(mRNG);
-		mRNG.setConfig(0);
+		mRNG.setConfig(8);
 		
 		tablero.inicializarMinas();
 		int res_0 = tablero.proxyCuentaAbajoDerecha();

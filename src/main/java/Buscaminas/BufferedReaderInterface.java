@@ -3,7 +3,7 @@ package Buscaminas;
 
 
 public interface BufferedReaderInterface {
-	String read() throws Exception;
-	void setConfig(int c);
+	public String read() throws Exception;
+	public void setConfig(int c);
 
 }

@@ -29,7 +29,7 @@ public class Tablero {
 		int v[];
 		int aleatorioX, aleatorioY;
 		for (int i = 0; i < this.minas; i++) {
-			 v=rng.getRandomNumber();
+			 v=rng.getRandomNumber();		 
 			 aleatorioX= v[0];
 			 aleatorioY = v[1];
 			 			
