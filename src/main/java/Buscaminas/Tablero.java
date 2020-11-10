@@ -69,7 +69,7 @@ public class Tablero {
 			if(this.tablero[movimiento.getFila()][movimiento.getColumna()] == " ") {
 				int vecinos = proxyCuentaVecinos(movimiento.getFila(),movimiento.getColumna());
 				this.tablero[movimiento.getFila()][movimiento.getColumna()] = Integer.toString(vecinos);
-				this.setCasillasRestantes(this.casillasRestantes--);
+				this.setCasillasRestantes(this.casillasRestantes = this.casillasRestantes-1);
 			}
 			break;
 		case("M"):
