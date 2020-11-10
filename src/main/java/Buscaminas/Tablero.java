@@ -67,7 +67,7 @@ public class Tablero {
 		switch(movimiento.getAccion()) {
 		case("A"):
 			if(this.tablero[movimiento.getFila()][movimiento.getColumna()] == " ") {
-				int vecinos = proxyCuentaVecinos(movimiento.getFila(),movimiento.getColumna());
+				int vecinos = this.cuentaVecinos(movimiento.getFila(),movimiento.getColumna());
 				this.tablero[movimiento.getFila()][movimiento.getColumna()] = Integer.toString(vecinos);
 				this.setCasillasRestantes(this.casillasRestantes = this.casillasRestantes-1);
 			}
