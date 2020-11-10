@@ -54,14 +54,14 @@ public class Tablero {
 		return pintar;
 	}
 	public boolean compruebaGanador() {
-    	boolean ganador = false;
+    		boolean ganador = false;
     	
-    	if (this.casillasRestantes == 0) {
-    		ganador = true;
+    		if (this.casillasRestantes == 0) {
+    			ganador = true;
+    		}
+    	
+    		return ganador;
     	}
-    	
-    	return ganador;
-    }
 	
 	private void actualizar(Movimiento movimiento) {
 		switch(movimiento.getAccion()) {
@@ -91,9 +91,9 @@ public class Tablero {
 		this.casillasRestantes=restantes;
 	}
 	
-    public String[][] getTablero() {
+    	public String[][] getTablero() {
   		return tablero;
-      }
+      	}
 	public String getPos(int x, int y) {
 		return this.tablero_minas[x][y];
 	}
