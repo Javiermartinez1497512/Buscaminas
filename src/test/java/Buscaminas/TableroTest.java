@@ -459,6 +459,26 @@ public class TableroTest {
 		assertEquals(res6_0, 2);
 	}
 	@Test
+	public void cuentaCentroTest() {
+		Tablero tablero = new Tablero();
+		RNG mRNG= new MockRNG();
+		tablero.setRNG(mRNG);
+		mRNG.setConfig(8);
+		
+		tablero.inicializarMinas();
+		
+		int res2_3 = tablero.proxyCuentaCentro(2,3);
+		int res2_5 = tablero.proxyCuentaCentro(2, 5);
+		int res3_1 = tablero.proxyCuentaCentro(3, 1);
+		int res4_4 = tablero.proxyCuentaCentro(4, 4);
+		
+		assertEquals(res2_3, 1);
+		assertEquals(res2_5, 1);
+		assertEquals(res3_1, 0);
+		assertEquals(res4_4, 1);
+		
+	}
+	@Test
 	public void pintarTest() {
 		Tablero tablero = new Tablero();
 		

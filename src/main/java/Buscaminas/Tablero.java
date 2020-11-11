@@ -54,14 +54,14 @@ public class Tablero {
 		return pintar;
 	}
 	public boolean compruebaGanador() {
-    		boolean ganador = false;
+		boolean ganador = false;
     	
-    		if (this.casillasRestantes == 0) {
-    			ganador = true;
-    		}
-    	
-    		return ganador;
+    	if (this.casillasRestantes == 0) {
+    		ganador = true;
     	}
+    	
+    	return ganador;
+    }
 	
 	private void actualizar(Movimiento movimiento) {
 		switch(movimiento.getAccion()) {
@@ -361,5 +361,8 @@ public class Tablero {
 	}
 	public int proxyCuentaDerecha(int fila) {
 		return this.cuentaDerecha(fila);
+	}
+	public int proxyCuentaCentro(int fila, int columna) {
+		return this.cuentaCentro(fila, columna);
 	}
 }

@@ -22,6 +22,7 @@ public class MovimientoTest {
 		assertFalse(movimiento.validaFila("9"));
 		assertFalse(movimiento.validaFila("0"));
 		assertFalse(movimiento.validaFila("-1"));
+		assertFalse(movimiento.validaFila("A"));
 	}
 	
 	@Test
@@ -37,6 +38,10 @@ public class MovimientoTest {
 		assertTrue(movimiento.validaColumna("g"));
 		assertTrue(movimiento.validaColumna("H"));
 		assertTrue(movimiento.validaColumna("h"));
+		assertTrue(movimiento.validaColumna("c"));
+		assertTrue(movimiento.validaColumna("D"));
+		assertTrue(movimiento.validaColumna("e"));
+		assertTrue(movimiento.validaColumna("F"));
 		
 		assertFalse(movimiento.validaColumna("1"));
 		assertFalse(movimiento.validaColumna("2"));
