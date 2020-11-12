@@ -49,6 +49,30 @@ public class TableroTest {
 		assertEquals(tablero.getPos(7, 2), null);
 		assertEquals(tablero.getPos(6, 6), null);
 		assertEquals(tablero.getPos(7, 6), null);
+		
+		tablero =  new Tablero();
+		mRNG= new MockRNG();
+		tablero.setRNG(mRNG);
+		mRNG.setConfig(32);
+		
+		tablero.inicializarMinas();
+		assertEquals(tablero.getPos(4, 5), "X");
+		assertEquals(tablero.getPos(4, 6), "X");
+		assertEquals(tablero.getPos(5, 4), "X");
+		assertEquals(tablero.getPos(6, 4), "X");
+		assertEquals(tablero.getPos(6, 6), "X");
+		assertEquals(tablero.getPos(7, 1), "X");
+		assertEquals(tablero.getPos(7, 2), "X");
+		assertEquals(tablero.getPos(7, 3), "X");	
+		
+		assertEquals(tablero.getPos(1, 0), null);
+		assertEquals(tablero.getPos(0, 2), null);
+		assertEquals(tablero.getPos(0, 6), null);
+		assertEquals(tablero.getPos(2, 7), null);
+		assertEquals(tablero.getPos(6, 0), null);
+		assertEquals(tablero.getPos(7, 7), null);
+		assertEquals(tablero.getPos(6, 5), null);
+		assertEquals(tablero.getPos(7, 6), null);
 	}
 	
 	@Test
@@ -340,6 +364,16 @@ public class TableroTest {
 		
 		int res_0 =tablero.proxyCuentaArribaIzquierda();
 		assertEquals(res_0, 2);
+		
+		tablero = new Tablero();
+		mRNG = new MockRNG();
+		tablero.setRNG(mRNG);
+		mRNG.setConfig(16);
+		
+		tablero.inicializarMinas();
+		
+		int res_1 = tablero.proxyCuentaArribaIzquierda();
+		assertEquals(res_1, 1);
 	}
 	@Test
 	public void cuentaArribaDerechaTest() {
@@ -351,6 +385,15 @@ public class TableroTest {
 		tablero.inicializarMinas();
 		int res_0 = tablero.proxyCuentaArribaDerecha();
 		assertEquals(res_0, 1);
+		
+		tablero = new Tablero();
+		mRNG = new MockRNG();
+		tablero.setRNG(mRNG);
+		mRNG.setConfig(16);
+		
+		tablero.inicializarMinas();
+		int res_2 = tablero.proxyCuentaArribaDerecha();
+		assertEquals(res_2, 2);
 	}
 	@Test
 	public void cuentaAbajoIzquierdaTest() {
@@ -362,6 +405,15 @@ public class TableroTest {
 		tablero.inicializarMinas();
 		int res_0 = tablero.proxyCuentaAbajoIzquierda();
 		assertEquals(res_0, 0);
+		
+		tablero = new Tablero();
+		mRNG = new MockRNG();
+		tablero.setRNG(mRNG);
+		mRNG.setConfig(16);
+		
+		tablero.inicializarMinas();
+		int res_3 = tablero.proxyCuentaAbajoIzquierda();
+		assertEquals(res_3, 3);
 	}
 	@Test
 	public void cuentaAbajoDerechaTest() {
@@ -373,6 +425,15 @@ public class TableroTest {
 		tablero.inicializarMinas();
 		int res_0 = tablero.proxyCuentaAbajoDerecha();
 		assertEquals(res_0, 0);
+		
+		tablero = new Tablero();
+		mRNG = new MockRNG();
+		tablero.setRNG(mRNG);
+		mRNG.setConfig(24);
+		
+		tablero.inicializarMinas();
+		int res_3 = tablero.proxyCuentaAbajoDerecha();
+		assertEquals(res_3, 3);
 	}
 	@Test
 	public void cuentaArribaTest() {
@@ -394,6 +455,15 @@ public class TableroTest {
 		assertEquals(res0_4, 0);
 		assertEquals(res0_5, 0);
 		assertEquals(res0_6, 2);
+		
+		tablero = new Tablero();
+		mRNG = new MockRNG();
+		tablero.setRNG(mRNG);
+		mRNG.setConfig(24);
+		
+		tablero.inicializarMinas();
+		res0_4 = tablero.proxyCuentaArriba(4);
+		assertEquals(res0_4, 2);
 	}
 	@Test
 	public void cuentaAbajoTest() {
@@ -457,6 +527,15 @@ public class TableroTest {
 		assertEquals(res4_0, 0);
 		assertEquals(res5_0, 0);
 		assertEquals(res6_0, 2);
+		
+		tablero = new Tablero();
+		mRNG = new MockRNG();
+		tablero.setRNG(mRNG);
+		mRNG.setConfig(16);
+		
+		tablero.inicializarMinas();
+		res5_0 = tablero.proxyCuentaIzquierda(5);
+		assertEquals(res5_0, 3);
 	}
 	@Test
 	public void cuentaCentroTest() {
@@ -477,6 +556,14 @@ public class TableroTest {
 		assertEquals(res3_1, 0);
 		assertEquals(res4_4, 1);
 		
+		tablero = new Tablero();
+		mRNG= new MockRNG();
+		tablero.setRNG(mRNG);
+		mRNG.setConfig(32);
+		
+		tablero.inicializarMinas();
+		int res5_5 = tablero.proxyCuentaCentro(5, 5);
+		assertEquals(res5_5, 5);
 	}
 	@Test
 	public void pintarTest() {
