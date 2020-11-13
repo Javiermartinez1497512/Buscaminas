@@ -24,8 +24,7 @@ public class Tablero {
 		}
     }
 
-    public void inicializarMinas() {
-		
+    public void inicializarMinas() {	
 		int v[];
 		int aleatorioX, aleatorioY;
 		for (int i = 0; i < this.minas; i++) {

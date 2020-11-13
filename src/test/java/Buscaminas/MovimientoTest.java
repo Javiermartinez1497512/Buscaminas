@@ -9,12 +9,19 @@ public class MovimientoTest {
 	 * El "tablero" de juego de las minas será de 8x8.
 	 * Entoces tenemos que asegurar-nos que el usuario realiza un movimiento permitido.
 	 */
+	@Test
+	public void TestMovimiento(){
+		Movimiento movimiento = new Movimiento();
+		assertEquals(0,movimiento.getFila());
+		assertEquals(0,movimiento.getColumna());
+		assertEquals(null,movimiento.getAccion());
+	}
+	
 	
 	@Test
 	public void validaFilaTest() {
 		Movimiento movimiento = new Movimiento();
-		
-		
+			
 		assertTrue(movimiento.validaFila("1"));
 		assertTrue(movimiento.validaFila("2"));
 		assertTrue(movimiento.validaFila("7"));
@@ -28,7 +35,6 @@ public class MovimientoTest {
 	@Test
 	public void validaColumnaTest() {
 		Movimiento movimiento = new Movimiento();
-		
 		
 		assertTrue(movimiento.validaColumna("A"));
 		assertTrue(movimiento.validaColumna("a"));
