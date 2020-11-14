@@ -8,7 +8,7 @@ import org.junit.Test;
 public class PartidaTest {
 	
 	@Test
-	public void TestPartida(RNG RandomNumberGenerator) {
+	public void TestPartida() {
 		RNG mRNG= new MockRNG();		
 		mRNG.setConfig(0);
 		Partida partida = new Partida(mRNG);
@@ -18,7 +18,6 @@ public class PartidaTest {
 	
 	@Test
 	public void noSeguirTest() {
-		
 		RNG mRNG= new MockRNG();		
 		mRNG.setConfig(0);
 		Partida partida = new Partida(mRNG);
