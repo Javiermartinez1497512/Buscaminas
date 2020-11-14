@@ -7,6 +7,7 @@ import org.junit.Test;
 public class TableroTest {
 	
 
+	@SuppressWarnings("deprecation")
 	@Test
 	public void iniciarTableroTest() {
 		Tablero tablero =  new Tablero();

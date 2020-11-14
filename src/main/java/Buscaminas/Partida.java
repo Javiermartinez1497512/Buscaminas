@@ -13,10 +13,10 @@ public class Partida {
 		
 	}
 
-	public boolean seguir() {
+	public boolean getPerdido() {
 		return this.perdido;
 	}
-
+	
 	public void noSeguir() {
 		this.perdido = true;
 	}
@@ -24,55 +24,55 @@ public class Partida {
 		this.reader=r;
 	}
 
-	public boolean iniciar() throws Exception {
-		// Objeto para leer por teclado.
-
-		System.out.println("Empieza la partida");
-		System.out.println();
-		System.out.println(tablero.pintar());
-
-		while (!this.seguir() && !this.tablero.compruebaGanador()) {
-			System.out.print("Introduce el numero de fila [1-8]: "+"\n");
-			String x = reader.read();
-			System.out.print("Introduce la letra de fila [A-H]: "+"\n");
-			String y = reader.read();
+		public boolean iniciar() throws Exception {
+			// Objeto para leer por teclado.
+	
+			System.out.println("Empieza la partida");
 			System.out.println();
-
-			Movimiento movimiento = new Movimiento();
-
-			if (movimiento.validaMovimiento(x, y)) {
-				System.out.print("Introduce una accion a realizar A[Abrir], M[Marcar], D[Desmarcar], C[Cancelar]: "+"\n");
-				String accion = reader.read();
-				
-				if (movimiento.validaAccion(accion)) {
-					//Aqui tocaria ya comprobar cosas con el tablero.
-					boolean mina = tablero.aplicaAccion(movimiento);
+			System.out.println(tablero.pintar());
+	
+			while (!this.getPerdido() && !this.tablero.compruebaGanador()) {
+				System.out.print("Introduce el numero de fila [1-8]: "+"\n");
+				String x = reader.read();
+				System.out.print("Introduce la letra de fila [A-H]: "+"\n");
+				String y = reader.read();
+				System.out.println();
+	
+				Movimiento movimiento = new Movimiento();
+	
+				if (movimiento.validaMovimiento(x, y)) {
+					System.out.print("Introduce una accion a realizar A[Abrir], M[Marcar], D[Desmarcar], C[Cancelar]: "+"\n");
+					String accion = reader.read();
 					
-					if (mina) {
-						System.out.println("GAME OVER :("+"\n");
-						this.noSeguir();
+					if (movimiento.validaAccion(accion)) {
+						//Aqui tocaria ya comprobar cosas con el tablero.
+						boolean mina = tablero.aplicaAccion(movimiento);
 						
+						if (mina) {
+							System.out.println("GAME OVER :("+"\n");
+							this.noSeguir();
+							
+						}else {
+							System.out.println(tablero.pintar());
+						}
 					}else {
-						System.out.println(tablero.pintar());
-					}
+						System.out.println("ERR3: Las acciones permitidas son : A, M, D, C . Vuelva a introducir su casilla y su accion"+"\n");
+					}	
 				}else {
-					System.out.println("ERR3: Las acciones permitidas son : A, M, D, C . Vuelva a introducir su casilla y su accion"+"\n");
-				}	
-			}else {
-				if (!movimiento.validaFila(x)) {
-					System.out.println("ERR1: El primer campo es un valor entre 1 y 8. Vuelva a introducir su casilla"+"\n");
-				}else if (!movimiento.validaColumna(y)) {
-					System.out.println("ERR2: El segundo campo es una letra entre A y H. Vuelva a introducir su casilla"+"\n");
+					if (!movimiento.validaFila(x)) {
+						System.out.println("ERR1: El primer campo es un valor entre 1 y 8. Vuelva a introducir su casilla"+"\n");
+					}else if (!movimiento.validaColumna(y)) {
+						System.out.println("ERR2: El segundo campo es una letra entre A y H. Vuelva a introducir su casilla"+"\n");
+					}
 				}
 			}
+			boolean ganador = false;
+			if (tablero.compruebaGanador()) {
+				System.out.println("YOU WIN!!!!!");
+				ganador = true;
+			}
+			return ganador;
 		}
-		boolean ganador = false;
-		if (tablero.compruebaGanador()) {
-			System.out.println("YOU WIN!!!!!");
-			ganador = true;
-		}
-		return ganador;
-	}
 
 	public static void main(String [] args) throws Exception {
 		

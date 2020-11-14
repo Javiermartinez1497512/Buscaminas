@@ -8,11 +8,12 @@ import org.junit.Test;
 public class PartidaTest {
 	
 	@Test
-	public void seguirTest() {
+	public void TestPartida(RNG RandomNumberGenerator) {
 		RNG mRNG= new MockRNG();		
 		mRNG.setConfig(0);
 		Partida partida = new Partida(mRNG);
-		assertFalse(partida.seguir());
+		assertFalse(partida.getPerdido());
+		
 	}
 	
 	@Test
@@ -21,9 +22,9 @@ public class PartidaTest {
 		RNG mRNG= new MockRNG();		
 		mRNG.setConfig(0);
 		Partida partida = new Partida(mRNG);
-		assertFalse(partida.seguir());
+		assertFalse(partida.getPerdido());
 		partida.noSeguir();
-		assertTrue(partida.seguir());
+		assertTrue(partida.getPerdido());
 	}
 	@Test
 	public void iniciarTest() throws Exception {
