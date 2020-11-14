@@ -75,7 +75,7 @@ public class Tablero {
 			if (this.tablero[movimiento.getFila()][movimiento.getColumna()] == " ") {
 				this.tablero[movimiento.getFila()][movimiento.getColumna()] = "M";
 			}
-			break;
+			break; 	
 		case("D"):
 			if (this.tablero[movimiento.getFila()][movimiento.getColumna()] == "M") {
 				this.tablero[movimiento.getFila()][movimiento.getColumna()] = " ";

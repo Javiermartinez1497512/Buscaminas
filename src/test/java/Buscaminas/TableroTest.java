@@ -584,5 +584,7 @@ public class TableroTest {
 			
 		assertEquals(tablero_clear, pintar1);
 		System.out.println(pintar1);
+		
+		
 	}
 }
